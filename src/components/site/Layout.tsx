@@ -2,7 +2,7 @@ import { T, Co, Icon, useEditable, safeImg } from "@/lib/editable";
 import drLogo from "@/assets/dr-logo.png";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { company, contactLink, services } from "@/lib/site";
+import { company, contactLink as contactHref, services } from "@/lib/site";
 
 
 export function Topbar() {
@@ -15,7 +15,7 @@ export function Topbar() {
               <Icon k="top.phoneIcon" d="fa-phone-alt" className="text-primary me-2" />
               <Co f="phone" />
             </a>
-            <a className="text-body px-2" href={contactLink(company.email)} target="_blank" rel="noreferrer">
+            <a className="text-body px-2" href={contactHref(company.email)} target="_blank" rel="noreferrer">
               <Icon k="top.emailIcon" d="fa-at" className="text-primary me-2" />
               <Co f="email" />
             </a>
@@ -240,7 +240,7 @@ export function Footer() {
             <p className="mb-2"><Icon k="footer.addrIcon" d="fa-map-marker-alt" className="text-primary me-3" /><Co f="address" /></p>
             <p className="mb-2"><Icon k="footer.phoneIcon" d="fa-phone-alt" className="text-primary me-3" /><Co f="phone" /></p>
             <p className="mb-2"><i className="fab fa-whatsapp text-primary me-3"></i><a className="text-body" href={company.whatsappHref} target="_blank" rel="noreferrer"><T k="footer.waUs" d="WhatsApp Us" line /></a></p>
-            <p className="mb-2"><Icon k="footer.emailIcon" d="fa-at" className="text-primary me-3" /><a className="text-body" href={contactLink(company.email)} target="_blank" rel="noreferrer"><Co f="email" /></a></p>
+            <p className="mb-2"><Icon k="footer.emailIcon" d="fa-at" className="text-primary me-3" /><a className="text-body" href={contactHref(company.email)} target="_blank" rel="noreferrer"><Co f="email" /></a></p>
           </div>
         </div>
       </div>
