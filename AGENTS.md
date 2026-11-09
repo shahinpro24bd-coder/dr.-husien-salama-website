@@ -28,3 +28,19 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Editable site content lives in the site_content table (keys company, services, faqs, texts) and is merged into the shared data in src/lib/site.ts by applyContent() in the root route; bundled values stay as fallback so the site works with an empty database.
+- Every public page body lives in src/components/site/pages (or HomeContent) so the route and the admin page editor (/admin/pages/$page) render the same component; wrap text in `<T k d>`, images in `<Img k d>`, icons in `<Icon k d>` from src/lib/editable.tsx — no hard-coded visible copy, so admins can edit everything.
+- Repeating content (cards, steps, bullets) uses `useList(key, defaults)` with `ItemTools`/`AddItem`; item keys are `${key}.${id}.field` and order/existence is stored as JSON under `${key}.__ids`.
+- Keys `services.N.*`, `faqs.N.*` and `company.<field>` (Contact Info, rendered with `<Co f>`) map to the shared services/faqs/company data; all other keys live in the `texts` row. SEO overrides are `seo.<page>.title|description`.
+- Route paths (/amc, /industries, /projects, /services) are kept from the original template for structure; only their visible labels describe the current business.
+- The company "email" field may hold an @handle; always build its link with contactLink() from src/lib/site.ts.
+- Admin access is the `admin` role in user_roles (has_role RLS). The first admin is created by a one-time setup on /auth where the owner picks the password.
+- Bundled photos live as real files in src/assets (the site may be hosted outside Lovable) and saved image values go through resolveImg() in src/lib/images.ts. Case videos live in public/videos, compressed to ~540px wide.
+- Uploaded images go to the private site-images bucket; uploadSiteImage() stores a long-lived signed link.
+- Server code must not rely on process.env alone for public backend settings: fall back to import.meta.env.VITE_*.
+- Full-width section bands use the `.band` class with content inside `.container`.
+- The admin's business module is Invoices (src/components/admin/Billing.tsx); money math is pure in src/lib/business.ts with tests.
+- src/test/editable-coverage.test.tsx renders every page in edit mode and fails on any visible text, icon or photo that is not editable; run it after touching page markup.
