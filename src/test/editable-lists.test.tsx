@@ -31,8 +31,8 @@ describe("editable lists", () => {
 
 describe("services from the admin panel", () => {
   it("removing a service removes it from the site list", () => {
-    const saved = defaults.services.filter((s) => s.slug !== "vrf");
-    expect(mergeServices(saved).map((s) => s.slug)).not.toContain("vrf");
+    const saved = defaults.services.filter((s) => s.slug !== "diagnosis");
+    expect(mergeServices(saved).map((s) => s.slug)).not.toContain("diagnosis");
     expect(mergeServices(saved)).toHaveLength(defaults.services.length - 1);
   });
   it("an added service appears with its own page id", () => {
