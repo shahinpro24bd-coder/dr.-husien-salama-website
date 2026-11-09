@@ -2,13 +2,13 @@ import type { SiteContent } from "@/lib/cms";
 
 // Default search-engine title/description per page; admins can override them (keys seo.<page>.title / .description).
 export const seoDefaults: Record<string, { name: string; title: string; description: string }> = {
-  home: { name: "Home", title: "QMEP Electromechanical LLC | Reliable MEP Solutions in Dubai", description: "Professional HVAC, electrical, plumbing and MEP maintenance services for residential and commercial buildings across Dubai." },
-  about: { name: "About", title: "About Us | QMEP Electromechanical LLC", description: "Learn about QMEP Electromechanical LLC, our mission, vision and core values in MEP services in Dubai." },
-  services: { name: "Services", title: "MEP & Electromechanical Services | QMEP Dubai", description: "HVAC, electrical, plumbing, MEP maintenance, AMC and VRF/VRV services in Dubai by QMEP Electromechanical LLC." },
-  amc: { name: "AMC Packages", title: "AMC Packages | Annual Maintenance Contracts Dubai | QMEP", description: "Residential, commercial and comprehensive MEP Annual Maintenance Contracts in Dubai from QMEP Electromechanical LLC." },
-  projects: { name: "Projects", title: "Our Projects | QMEP Electromechanical LLC", description: "Explore HVAC, electrical, plumbing and MEP maintenance work by QMEP Electromechanical LLC in Dubai." },
-  industries: { name: "Industries", title: "Industries We Serve | QMEP Electromechanical LLC", description: "MEP solutions for residential, commercial, fit-out, facility management and main contractor projects in Dubai." },
-  contact: { name: "Contact", title: "Contact Us | Request a Quote | QMEP Electromechanical LLC", description: "Contact QMEP Electromechanical LLC in Dubai for HVAC, electrical, plumbing and MEP maintenance quotations." },
+  home: { name: "Home", title: "Dr. Husien Salama | Dentist in Baghdad — Saving Teeth", description: "Dr. Husien Salama (د. حسين سلامة), dentist in Al-Mansour, Baghdad: root canal treatment, retreatment, E.max restorations and saving broken teeth." },
+  about: { name: "About", title: "About Dr. Husien Salama | Dentist, Baghdad", description: "Meet Dr. Husien Salama, a Baghdad dentist with a Diploma in Dental Treatment (ADA) whose mission is saving teeth." },
+  services: { name: "Treatments", title: "Dental Treatments | Dr. Husien Salama, Baghdad", description: "Root canals, retreatment, E.max lab restorations, saving broken teeth, tooth-coloured fillings and X-ray check-ups in Baghdad." },
+  amc: { name: "Treatment Plans", title: "Treatment Plans | Dr. Husien Salama, Dentist Baghdad", description: "From a check-up with X-rays to single tooth rescue and full mouth plans at Clear Dental Care, Al-Mansour." },
+  projects: { name: "Cases", title: "Patient Cases & Videos | Dr. Husien Salama", description: "Real before-and-after X-rays, photos and videos of teeth saved by Dr. Husien Salama in Baghdad." },
+  industries: { name: "Who We Treat", title: "Who We Treat | Dr. Husien Salama, Dentist Baghdad", description: "Toothache, failed root canals, broken teeth and second opinions — for patients from Baghdad and all over Iraq." },
+  contact: { name: "Contact", title: "Book an Appointment | Dr. Husien Salama, Baghdad", description: "Call or WhatsApp 0774 444 4992. Clear Dental Care, 14 Ramadan St., Al-Mansour, Baghdad — open daily 11 AM to 9 PM." },
 };
 
 type MatchLike = { loaderData?: unknown };

@@ -556,6 +556,9 @@
 .pj-media { position: relative; height: 300px; overflow: hidden; }
 .pj-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
 .pj-card:hover .pj-media img { transform: scale(1.1); }
+.pj-media .pj-video { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--dark); }
+.pj-media:has(.pj-video) { height: 420px; }
+.pj-video-title { font-size: 1.6rem; line-height: 1.05; margin: 0 0 .9rem; color: var(--dark); }
 .pj-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,20,.1) 30%, rgba(20,20,20,.9)); }
 .pj-chip { position: absolute; top: 1rem; left: 1rem; display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .8rem; background: rgba(255,255,255,.95); color: var(--dark); font-size: .72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
 .pj-chip i { color: var(--primary); }
