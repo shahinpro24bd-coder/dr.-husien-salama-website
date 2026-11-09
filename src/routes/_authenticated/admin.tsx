@@ -295,7 +295,7 @@ function AdminPage() {
             {quotes.map((q) => (
               <div key={q.id} className="border p-3 mb-3" style={{ borderLeft: q.status === "new" ? "4px solid var(--primary)" : undefined }}>
                 <div className="d-flex flex-wrap justify-content-between gap-2">
-                  <h5 className="m-0">{q.name}{q.company ? ` · ${q.company}` : ""}</h5>
+                  <h5 className="m-0">{q.name}{q.company ? ` · Age ${q.company}` : ""}</h5>
                   <small className="text-muted">{new Date(q.created_at).toLocaleString()}</small>
                 </div>
                 <p className="mb-1 mt-2"><strong>{q.service}</strong>{q.property_type ? ` · ${q.property_type}` : ""} · {q.location}</p>
@@ -311,7 +311,7 @@ function AdminPage() {
                 </div>
                 <div className="d-flex flex-wrap gap-2">
                   <select className="form-select form-select-sm" style={{ width: 160 }} value={q.status} onChange={(e) => setQuoteStatus(q.id, e.target.value)}>
-                    <option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="won">Won</option><option value="lost">Lost</option><option value="done">Done</option>
+                    <option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Booked</option><option value="won">Treated</option><option value="lost">Cancelled</option><option value="done">Done</option>
                   </select>
                   <button className="btn btn-sm btn-outline-danger" onClick={() => deleteQuote(q.id)}>Delete</button>
                 </div>
