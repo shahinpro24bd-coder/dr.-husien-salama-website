@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
-import type { SiteContent } from "@/lib/cms";
+import { ADMIN_EMAIL, type SiteContent } from "@/lib/cms";
 
 // Public read of the editable site content (site_content allows anonymous reads).
 export const getSiteContent = createServerFn({ method: "GET" }).handler(async (): Promise<SiteContent> => {
@@ -53,11 +53,11 @@ export const ensureAdminAccount = createServerFn({ method: "POST" })
     const { count } = await supabaseAdmin.from("user_roles").select("id", { count: "exact", head: true }).eq("role", "admin");
     if ((count ?? 0) > 0) return { created: false, error: "An admin account already exists." };
     let userId: string | undefined;
-    const { data, error } = await supabaseAdmin.auth.admin.createUser({ email: "admin@qmep-app.com", password: input.password, email_confirm: true });
+    const { data, error } = await supabaseAdmin.auth.admin.createUser({ email: ADMIN_EMAIL, password: input.password, email_confirm: true });
     if (error) {
       if (error.code === "weak_password" || /weak|guess|pwned/i.test(error.message)) return { created: false, error: "That password is too easy to guess. Please choose a stronger one." };
       const list = await supabaseAdmin.auth.admin.listUsers();
-      userId = list.data.users.find((u) => u.email === "admin@qmep-app.com")?.id;
+      userId = list.data.users.find((u) => u.email === ADMIN_EMAIL)?.id;
       if (!userId) return { created: false, error: "Could not create the admin account." };
       const upd = await supabaseAdmin.auth.admin.updateUserById(userId, { password: input.password });
       if (upd.error) return { created: false, error: "That password is too easy to guess. Please choose a stronger one." };

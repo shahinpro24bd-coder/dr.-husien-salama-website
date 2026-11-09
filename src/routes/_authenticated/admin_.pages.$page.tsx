@@ -37,11 +37,11 @@ function findPage(page: string) {
 export const Route = createFileRoute("/_authenticated/admin_/pages/$page")({
   head: () => ({
     meta: [
-      { title: "Edit Page | QMEP Admin" },
-      { name: "description", content: "Edit the texts and images of a QMEP website page." },
+      { title: "Edit Page | Website Admin" },
+      { name: "description", content: "Edit the texts and images of a website page." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Edit Page | QMEP Admin" },
-      { property: "og:description", content: "QMEP page editor." },
+      { property: "og:title", content: "Edit Page | Website Admin" },
+      { property: "og:description", content: "Website page editor." },
     ],
   }),
   component: PageEditor,

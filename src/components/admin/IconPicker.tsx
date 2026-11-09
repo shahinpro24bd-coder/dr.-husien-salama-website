@@ -1,7 +1,9 @@
 import { useState } from "react";
 
-// Font Awesome 5 (solid) icons that suit an MEP / building-services website.
+// Font Awesome 5 (solid) icons that suit a dental clinic website.
 export const ICONS = [
+  "fa-tooth", "fa-teeth", "fa-teeth-open", "fa-x-ray", "fa-user-md", "fa-stethoscope", "fa-syringe", "fa-first-aid",
+  "fa-gem", "fa-redo", "fa-fill-drip", "fa-smile", "fa-heart", "fa-search-plus", "fa-shield-alt", "fa-hospital-alt",
   "fa-snowflake", "fa-fan", "fa-wind", "fa-temperature-low", "fa-thermometer-half", "fa-fire", "fa-bolt", "fa-plug",
   "fa-lightbulb", "fa-solar-panel", "fa-battery-full", "fa-faucet", "fa-tint", "fa-shower", "fa-water", "fa-toilet",
   "fa-tools", "fa-wrench", "fa-hammer", "fa-screwdriver", "fa-hard-hat", "fa-hard-hat", "fa-cogs", "fa-cog",

@@ -49,8 +49,10 @@ export function applyContent(c: SiteContent | null | undefined) {
 
 /** Typing a new phone number also updates the call and WhatsApp links. */
 export function withPhone(co: CmsCompany, phone: string): CmsCompany {
-  const digits = phone.replace(/[^\d+]/g, "");
+  let digits = phone.replace(/[^\d+]/g, "");
   if (!digits.replace("+", "")) return { ...co, phone };
+  // Iraqi local numbers (0774 …) become international (+964 774 …) so call and WhatsApp links work.
+  if (/^0[1-9]/.test(digits)) digits = `+964${digits.slice(1)}`;
   return { ...co, phone, phoneHref: `tel:${digits}`, whatsappHref: `https://wa.me/${digits.replace(/^\+/, "")}` };
 }
 
@@ -62,5 +64,5 @@ export function makeSlug(title: string, taken: string[]) {
   return s;
 }
 
-export const ADMIN_EMAIL = "admin@qmep-app.com";
-export const usernameToEmail = (u: string) => (u.includes("@") ? u.trim() : `${u.trim().toLowerCase()}@qmep-app.com`);
+export const ADMIN_EMAIL = "admin@drhusien-site.com";
+export const usernameToEmail = (u: string) => (u.includes("@") ? u.trim() : `${u.trim().toLowerCase()}@drhusien-site.com`);

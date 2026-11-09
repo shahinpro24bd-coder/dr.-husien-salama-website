@@ -7,11 +7,11 @@ import { usernameToEmail } from "@/lib/cms";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Admin Sign In | QMEP Electromechanical LLC" },
-      { name: "description", content: "Sign in to manage the QMEP website content." },
+      { title: "Admin Sign In | Dr. Husien Salama" },
+      { name: "description", content: "Sign in to manage Dr. Husien Salama's website content." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Admin Sign In | QMEP" },
-      { property: "og:description", content: "QMEP website admin panel sign in." },
+      { property: "og:title", content: "Admin Sign In | Dr. Husien Salama" },
+      { property: "og:description", content: "Website admin panel sign in." },
     ],
   }),
   component: AuthPage,
@@ -58,7 +58,7 @@ function AuthPage() {
   return (
     <div className="d-flex align-items-center justify-content-center bg-light" style={{ minHeight: "100vh", padding: 16 }}>
       <form onSubmit={submit} className="bg-white shadow p-5" style={{ width: "100%", maxWidth: 420, borderTop: "4px solid var(--primary)" }}>
-        <h1 className="display-6 mb-1">QMEP Admin</h1>
+        <h1 className="display-6 mb-1">Website Admin</h1>
         {setup ? (
           <>
             <p className="text-muted mb-4">First-time setup: choose the password for your <strong>admin</strong> account. You'll sign in with username <strong>admin</strong> and this password.</p>

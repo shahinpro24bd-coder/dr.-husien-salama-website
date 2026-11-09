@@ -14,11 +14,11 @@ import { services as siteServices } from "@/lib/site";
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Admin Panel | QMEP Electromechanical LLC" },
-      { name: "description", content: "Manage QMEP website content and quote requests." },
+      { title: "Admin Panel | Dr. Husien Salama" },
+      { name: "description", content: "Manage website content and appointment requests." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Admin Panel | QMEP" },
-      { property: "og:description", content: "QMEP website admin panel." },
+      { property: "og:title", content: "Admin Panel | Dr. Husien Salama" },
+      { property: "og:description", content: "Website admin panel." },
     ],
   }),
   component: AdminPage,
@@ -37,12 +37,12 @@ const getSitePages = () => [
   ...siteServices.map((s) => ({ key: `service-${s.slug}`, name: s.title, path: `/services/${s.slug}`, icon: s.icon, desc: "Service detail page", edit: true })),
 ];
 const companyFields: { key: keyof CmsCompany; label: string }[] = [
-  { key: "name", label: "Company name" },
+  { key: "name", label: "Clinic / doctor name" },
   { key: "short", label: "Short name" },
   { key: "phone", label: "Phone (shown)" },
-  { key: "phoneHref", label: "Phone link (tel:+971...)" },
+  { key: "phoneHref", label: "Phone link (tel:+964...)" },
   { key: "whatsappHref", label: "WhatsApp link (https://wa.me/...)" },
-  { key: "email", label: "Email" },
+  { key: "email", label: "Email or Instagram (@name)" },
   { key: "address", label: "Address" },
   { key: "hours", label: "Working hours" },
   { key: "mapQuery", label: "Map location (address shown on the Contact page map)" },
@@ -152,10 +152,10 @@ function AdminPage() {
   const newCount = quotes.filter((q) => q.status === "new").length;
   const tabs: [Tab, string, string][] = [
     ["dashboard", "Dashboard", "fa-th-large"],
-    ["quotes", `Quote Requests${newCount ? ` (${newCount})` : ""}`, "fa-inbox"],
+    ["quotes", `Appointment Requests${newCount ? ` (${newCount})` : ""}`, "fa-inbox"],
     ["invoices", "Invoices", "fa-file-invoice-dollar"],
     ["company", "Contact Info", "fa-building"],
-    ["services", "Services", "fa-tools"],
+    ["services", "Treatments", "fa-tooth"],
     ["faqs", "FAQs", "fa-question-circle"],
     ["seo", "Google / SEO", "fa-search"],
     ["account", "Account", "fa-user-cog"],
@@ -165,7 +165,7 @@ function AdminPage() {
     <div className="bg-light" style={{ minHeight: "100vh" }}>
       <header className="bg-dark text-white sticky-top" style={{ zIndex: 50 }}>
         <div className="container d-flex flex-wrap align-items-center gap-3 py-3">
-          <h4 className="text-white m-0 me-auto">QMEP <span className="text-primary">Admin</span></h4>
+          <h4 className="text-white m-0 me-auto">Dr. Husien <span className="text-primary">Admin</span></h4>
           <a href="/" target="_blank" rel="noreferrer" className="btn btn-outline-light btn-sm"><i className="fa fa-external-link-alt me-1"></i>View site</a>
           <button className="btn btn-primary btn-sm px-3" onClick={save} disabled={saving || !dirty}>
             {saving ? "Saving…" : dirty ? "Save changes •" : "Saved"}
@@ -260,7 +260,7 @@ function AdminPage() {
           <div className="bg-white p-4 shadow-sm">
             <h4 className="mb-1">How your pages appear on Google</h4>
             <p className="text-muted mb-4">Leave a box empty to use the standard text (shown in grey).</p>
-            {[...Object.entries(seoDefaults), ...siteServices.map((sv) => [`service-${sv.slug}`, { name: sv.title, title: `${sv.title} in Dubai | QMEP Electromechanical`, description: sv.summary }] as const)].map(([key, d]) => (
+            {[...Object.entries(seoDefaults), ...siteServices.map((sv) => [`service-${sv.slug}`, { name: sv.title, title: `${sv.title} in Baghdad | Dr. Husien Salama`, description: sv.summary }] as const)].map(([key, d]) => (
               <div className="border-bottom pb-3 mb-3" key={key}>
                 <h6 className="mb-2">{d.name}</h6>
                 <label className="form-label small">Page title</label>
@@ -291,7 +291,7 @@ function AdminPage() {
 
         {tab === "quotes" && (
           <div className="bg-white p-4 shadow-sm">
-            {quotes.length === 0 && <p className="text-muted m-0">No quote requests yet.</p>}
+            {quotes.length === 0 && <p className="text-muted m-0">No appointment requests yet.</p>}
             {quotes.map((q) => (
               <div key={q.id} className="border p-3 mb-3" style={{ borderLeft: q.status === "new" ? "4px solid var(--primary)" : undefined }}>
                 <div className="d-flex flex-wrap justify-content-between gap-2">
@@ -332,7 +332,7 @@ function Dashboard({ quotes, newCount, servicesCount, faqCount, go }: {
     <>
       <div className="row g-3 mb-4">
         {[
-          [newCount, "New quote requests", "quotes"],
+          [newCount, "New appointment requests", "quotes"],
           [week, "Requests this week", "quotes"],
           [servicesCount, "Services listed", "services"],
           [faqCount, "FAQ questions", "faqs"],
@@ -376,10 +376,10 @@ function Dashboard({ quotes, newCount, servicesCount, faqCount, go }: {
         <div className="col-lg-8">
           <div className="bg-white p-4 shadow-sm h-100">
             <div className="d-flex justify-content-between align-items-center mb-3">
-              <h5 className="m-0">Latest quote requests</h5>
+              <h5 className="m-0">Latest appointment requests</h5>
               <button className="btn btn-link btn-sm" onClick={() => go("quotes")}>See all</button>
             </div>
-            {quotes.length === 0 && <p className="text-muted m-0">No quote requests yet.</p>}
+            {quotes.length === 0 && <p className="text-muted m-0">No appointment requests yet.</p>}
             {quotes.slice(0, 5).map((q) => (
               <div key={q.id} className="d-flex justify-content-between border-bottom py-2 gap-2">
                 <span><strong>{q.name}</strong> · {q.service}</span>
