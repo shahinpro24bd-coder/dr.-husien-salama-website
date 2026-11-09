@@ -1,58 +1,60 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import hero1Asset from "@/assets/hero-1.webp";
+import hero1Asset from "@/assets/hero-1.jpg";
 const hero1 = hero1Asset;
-import hero2Asset from "@/assets/hero-2.webp";
+import hero2Asset from "@/assets/hero-2.jpg";
 const hero2 = hero2Asset;
-import hero3Asset from "@/assets/hero-3.webp";
+import hero3Asset from "@/assets/hero-3.jpg";
 const hero3 = hero3Asset;
-import about1Asset from "@/assets/about-1.webp";
+import about1Asset from "@/assets/ig-dr-portrait.jpg";
 const about1 = about1Asset;
-import about2Asset from "@/assets/about-2.webp";
+import about2Asset from "@/assets/ig-dr-microscope.jpg";
 const about2 = about2Asset;
-import buildingsAsset from "@/assets/buildings.webp";
+import buildingsAsset from "@/assets/ig-case-broken-file.jpg";
 const buildings = buildingsAsset;
 import { company, services } from "@/lib/site";
 import { SectionTitle } from "@/components/site/Layout";
 import { CtaBanner, Faq, Process, QuoteSection, ServicesGrid, WhoWeServe, WhyUs } from "@/components/site/Sections";
-import amcImgAsset from "@/assets/service-amc.webp";
+import amcImgAsset from "@/assets/ig-case-decay-rescue.jpg";
 const amcImg = amcImgAsset;
-import maintImgAsset from "@/assets/service-maintenance.webp";
+import maintImgAsset from "@/assets/ig-case-molar-rct.jpg";
 const maintImg = maintImgAsset;
+import patientImgAsset from "@/assets/ig-dr-patient.jpg";
+const patientImg = patientImgAsset;
 
 import { T, Img, Icon, useEditable, useList, ItemTools, AddItem, safeImg } from "@/lib/editable";
 
 const slideDefaults = [
-  { img: hero1, step: "HVAC", title: "Reliable MEP Solutions for Buildings Across Dubai", text: "Professional electromechanical, HVAC, electrical, plumbing, and maintenance solutions designed to keep your property safe, comfortable, and operating efficiently." },
-  { img: hero2, step: "Electrical", title: "Electrical Works You Can Depend On", text: "Installation, inspection, troubleshooting, and maintenance for residential and commercial properties." },
-  { img: hero3, step: "Maintenance", title: "Planned Maintenance For Long-Term Property Care", text: "Annual Maintenance Contracts and preventive MEP maintenance tailored to your building's systems." },
+  { img: hero1, step: "Saving Teeth", title: "Saving Your Tooth Is My Mission", text: "Dr. Husien Salama is a dentist in Baghdad who does everything possible to keep your natural teeth — with X-ray diagnosis, rubber dam isolation and careful, detailed treatment." },
+  { img: hero2, step: "Root Canals", title: "Root Canals & Retreatment Done Right", text: "From first-time root canals to difficult retreatments with curved canals and broken instruments — treated from the root so the tooth can last." },
+  { img: hero3, step: "Restorations", title: "Natural Smiles With E.max Lab Restorations", text: "Strong, tooth-coloured E.max inlays, onlays and crowns rebuild treated teeth and bring back a natural, healthy smile." },
 ];
 
-const tabTitles = ["HVAC Works", "Electrical Works", "Plumbing Works", "MEP Maintenance"];
+const tabTitles = ["Root Canals", "Retreatments", "E.max Restorations", "Saved Teeth"];
 
 const aboutFeatures = [
-  { icon: "fa-fan", text: "Air Conditioning & HVAC" },
-  { icon: "fa-bolt", text: "Electrical Installations" },
-  { icon: "fa-tint", text: "Plumbing Works" },
-  { icon: "fa-tools", text: "Preventive Maintenance" },
+  { icon: "fa-tooth", text: "Root Canal Treatment" },
+  { icon: "fa-redo", text: "Root Canal Retreatment" },
+  { icon: "fa-gem", text: "E.max Lab Restorations" },
+  { icon: "fa-first-aid", text: "Saving Broken Teeth" },
 ];
 
 const audiences = [
   {
-    img: amcImg, icon: "fa-home", title: "Villa & Apartment Owners", sub: "Residential",
-    text: "AC, electrical and plumbing care for homes — from single repairs to year-round maintenance.",
+    img: amcImg, icon: "fa-tooth", title: "Patients in Pain", sub: "Toothache & Infection",
+    text: "Deep decay, swelling or a tooth that hurts at night — we find the cause with X-rays and treat it at the root.",
   },
   {
-    img: buildings, icon: "fa-building", title: "Commercial Buildings", sub: "Offices & Retail",
-    text: "Dependable MEP support for offices, shops and retail units, with minimal disruption to tenants.",
+    img: buildings, icon: "fa-redo", title: "Failed Root Canals", sub: "Retreatment",
+    text: "Old root canals that still hurt or show infection on X-ray — including broken instruments and curved canals.",
   },
   {
-    img: maintImg, icon: "fa-clipboard-list", title: "Facility Management", sub: "Property Managers",
-    text: "Planned AMC programs and routine visits that keep building systems running throughout the year.",
+    img: maintImg, icon: "fa-first-aid", title: "Teeth Told to Be Extracted", sub: "Second Opinion",
+    text: "Before you lose a tooth, get it checked. Many broken or badly decayed teeth can still be saved.",
   },
   {
-    img: about1, icon: "fa-hard-hat", title: "Main Contractors", sub: "Fit-Out & Projects",
-    text: "A reliable MEP partner for fit-out and project works, delivered to the agreed scope and timeline.",
+    img: patientImg, icon: "fa-map-marker-alt", title: "Patients From All Over Iraq", sub: "Baghdad & Provinces",
+    text: "Patients travel from Baghdad and other provinces such as Anbar — we plan visits to finish treatment efficiently.",
   },
 ];
 
@@ -86,12 +88,12 @@ export function HomeContent() {
         <div className="container hero-content">
           <div className="row">
             <div className="col-lg-11 col-xl-9" key={i}>
-              <span className="hero-kicker animated fadeInDown"><T k="home.hero.kicker" d="QMEP Electromechanical LLC · Dubai, UAE" /></span>
+              <span className="hero-kicker animated fadeInDown"><T k="home.hero.kicker" d="د. حسين سلامة · Dentist · Baghdad, Iraq" /></span>
               <h1 className="hero-title text-white animated fadeInUp"><T k={`home.hero.${sid}.title`} d={s.title} /></h1>
               <p className="hero-text animated fadeInUp"><T k={`home.hero.${sid}.text`} d={s.text} /></p>
               <div className="d-flex flex-wrap gap-3 animated fadeInUp">
-                <Link to="/contact" className="btn btn-primary py-3 px-5"><T k="home.hero.btn1" d="Request a Free Quote" line /></Link>
-                <Link to="/contact" className="btn hero-btn-outline py-3 px-5"><T k="home.hero.btn2" d="Contact Our Team" line /></Link>
+                <Link to="/contact" className="btn btn-primary py-3 px-5"><T k="home.hero.btn1" d="Book an Appointment" line /></Link>
+                <Link to="/contact" className="btn hero-btn-outline py-3 px-5"><T k="home.hero.btn2" d="Visit the Clinic" line /></Link>
                 <a href={company.whatsappHref} target="_blank" rel="noreferrer" className="btn hero-btn-wa py-3 px-4" aria-label="Chat on WhatsApp">
                   <i className="fab fa-whatsapp fs-5 me-2"></i><T k="home.hero.btn3" d="WhatsApp" line />
                 </a>
@@ -136,20 +138,20 @@ export function HomeContent() {
                 <span className="ab-frame" aria-hidden="true" />
                 <span className="why-tick why-tick-tl" aria-hidden="true" />
                 <span className="why-tick why-tick-tr" aria-hidden="true" />
-                <Img k="home.about.img1" d={about1} className="ab-img-main" alt="MEP engineer reviewing building systems" />
-                <Img k="home.about.img2" d={about2} className="ab-img-sub" alt="Technician installing an AC unit" />
+                <Img k="home.about.img1" d={about1} className="ab-img-main" alt="Dr. Husien Salama at Clear Dental Care" />
+                <Img k="home.about.img2" d={about2} className="ab-img-sub" alt="Dr. Husien Salama treating a patient under the microscope" />
                 <div className="ab-badge">
-                  <span className="ab-badge-num"><T k="home.about.badgeNum" d="6" line /></span>
-                  <span className="ab-badge-text"><small><T k="home.about.badge1" d="Core" line /></small><strong><T k="home.about.badge2" d="MEP Services" line /></strong></span>
+                  <span className="ab-badge-num"><T k="home.about.badgeNum" d="420+" line /></span>
+                  <span className="ab-badge-text"><small><T k="home.about.badge1" d="Cases Shared" line /></small><strong><T k="home.about.badge2" d="On Instagram" line /></strong></span>
                 </div>
-                <span className="ab-vert" aria-hidden="true"><T k="home.about.vert" d="QMEP · Dubai · UAE" line /></span>
+                <span className="ab-vert" aria-hidden="true"><T k="home.about.vert" d="Dr. Husien Salama · Baghdad" line /></span>
               </div>
             </div>
             <div className="col-lg-6">
               <div className="why-kicker"><span><T k="home.about.kicker" d="About Us" line /></span></div>
-              <h1 className="display-5 mb-3"><T k="home.about.title" d="Your Trusted Partner For MEP Solutions" /></h1>
-              <p className="ab-lead mb-4"><T k="home.about.lead" d="At QMEP Electromechanical LLC, we understand the importance of reliable building systems — air conditioning, electrical, plumbing and preventive maintenance that keep residential and commercial properties operating smoothly." /></p>
-              <p className="ab-text mb-4"><T k="home.about.text" d="Whether you require routine maintenance, a technical repair, a new installation, or support for a commercial project, our team is ready to discuss your requirements." /></p>
+              <h1 className="display-5 mb-3"><T k="home.about.title" d="Your Dentist For Saving Teeth" /></h1>
+              <p className="ab-lead mb-4"><T k="home.about.lead" d="I am Dr. Husien Salama (د. حسين سلامة), a dentist in Baghdad with a Diploma in Dental Treatment from the ADA. My work is built around one idea: saving the tooth before losing it." /></p>
+              <p className="ab-text mb-4"><T k="home.about.text" d="At Clear Dental Care in Al-Mansour, every case starts with an X-ray and a clear diagnosis. Treatment is done under rubber dam isolation with proper sterilisation — because the outside of a tooth can look fine while the roots are infected." /></p>
               <div className="row g-3 mb-4">
                 {features.ids.map((id) => {
                   const f = features.def(id);
@@ -162,8 +164,8 @@ export function HomeContent() {
                 <AddItem list={features} label="Add point" wrap={(b) => <div className="col-sm-6">{b}</div>} />
               </div>
               <div className="d-flex flex-wrap gap-3">
-                <Link className="btn btn-primary py-3 px-5" to="/services"><T k="home.about.btn1" d="Discover Our Services" line /></Link>
-                <Link className="ab-btn-ghost btn py-3 px-4" to="/about"><T k="home.about.btn2" d="More About Us" line /></Link>
+                <Link className="btn btn-primary py-3 px-5" to="/services"><T k="home.about.btn1" d="See All Treatments" line /></Link>
+                <Link className="ab-btn-ghost btn py-3 px-4" to="/about"><T k="home.about.btn2" d="About the Doctor" line /></Link>
               </div>
             </div>
           </div>
@@ -176,7 +178,7 @@ export function HomeContent() {
       {/* Project tabs */}
       <div className="band project py-5">
         <div className="container">
-          <SectionTitle k="home.proj" kicker="Our Projects" title="Real Work. Practical Solutions." />
+          <SectionTitle k="home.proj" kicker="Real Cases" title="Real Teeth. Saved." />
           <div className="row g-4">
             <div className="col-lg-4">
               <div className="nav nav-pills d-flex justify-content-between w-100 h-100 me-4">
@@ -201,7 +203,7 @@ export function HomeContent() {
                   {cur.s.items.slice(0, 3).map((it, j) => (
                     <p key={j}><Icon k="home.proj.checkIcon" d="fa-check" className="text-primary me-3" /><T k={`services.${tab}.items.${j}`} d={it} /></p>
                   ))}
-                  <Link to="/projects" className="btn btn-primary py-3 px-5 mt-3"><T k="home.proj.btn" d="View Our Projects" line /></Link>
+                  <Link to="/projects" className="btn btn-primary py-3 px-5 mt-3"><T k="home.proj.btn" d="See Patient Cases" line /></Link>
                 </div>
               </div>
             </div>
@@ -214,7 +216,7 @@ export function HomeContent() {
 
 
       <Process />
-      <CtaBanner k="home.cta" title="Plan Ahead. Maintain Your Property With Confidence." text="An Annual Maintenance Contract helps property owners and managers plan routine servicing for residential, villa, commercial, HVAC and combined MEP maintenance." button="Request an AMC Quote" />
+      <CtaBanner k="home.cta" kicker="Don't Wait" title="The Right Treatment At The Right Time Changes Everything." text="Early treatment can decide the future of a tooth. If something hurts, swells or feels wrong, book a check-up before the problem grows." button="Book a Check-Up" />
       <QuoteSection />
       <Faq />
     </>
