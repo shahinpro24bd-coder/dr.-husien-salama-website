@@ -14,16 +14,273 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      amc_contracts: {
+        Row: {
+          amount: number | null
+          created_at: string
+          customer_name: string
+          end_date: string | null
+          id: string
+          next_visit: string | null
+          notes: string | null
+          plan: string | null
+          property: string | null
+          start_date: string | null
+          status: string
+          visits_per_year: number | null
+        }
+        Insert: {
+          amount?: number | null
+          created_at?: string
+          customer_name: string
+          end_date?: string | null
+          id?: string
+          next_visit?: string | null
+          notes?: string | null
+          plan?: string | null
+          property?: string | null
+          start_date?: string | null
+          status?: string
+          visits_per_year?: number | null
+        }
+        Update: {
+          amount?: number | null
+          created_at?: string
+          customer_name?: string
+          end_date?: string | null
+          id?: string
+          next_visit?: string | null
+          notes?: string | null
+          plan?: string | null
+          property?: string | null
+          start_date?: string | null
+          status?: string
+          visits_per_year?: number | null
+        }
+        Relationships: []
+      }
+      customers: {
+        Row: {
+          address: string | null
+          company: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          notes: string | null
+          phone: string | null
+        }
+        Insert: {
+          address?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+        }
+        Update: {
+          address?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      invoices: {
+        Row: {
+          amount: number
+          created_at: string
+          customer_name: string
+          description: string | null
+          due_date: string | null
+          id: string
+          invoice_no: string
+          issue_date: string
+          notes: string | null
+          paid_date: string | null
+          status: string
+          vat_percent: number
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          customer_name: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_no: string
+          issue_date?: string
+          notes?: string | null
+          paid_date?: string | null
+          status?: string
+          vat_percent?: number
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          customer_name?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_no?: string
+          issue_date?: string
+          notes?: string | null
+          paid_date?: string | null
+          status?: string
+          vat_percent?: number
+        }
+        Relationships: []
+      }
+      jobs: {
+        Row: {
+          created_at: string
+          customer_name: string | null
+          id: string
+          location: string | null
+          notes: string | null
+          priority: string
+          scheduled_date: string | null
+          scheduled_time: string | null
+          service: string | null
+          status: string
+          technician: string | null
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          customer_name?: string | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          priority?: string
+          scheduled_date?: string | null
+          scheduled_time?: string | null
+          service?: string | null
+          status?: string
+          technician?: string | null
+          title: string
+        }
+        Update: {
+          created_at?: string
+          customer_name?: string | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          priority?: string
+          scheduled_date?: string | null
+          scheduled_time?: string | null
+          service?: string | null
+          status?: string
+          technician?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      quote_requests: {
+        Row: {
+          company: string | null
+          created_at: string
+          details: string
+          email: string | null
+          follow_up_date: string | null
+          id: string
+          location: string
+          name: string
+          notes: string | null
+          phone: string
+          property_type: string | null
+          service: string
+          status: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          details: string
+          email?: string | null
+          follow_up_date?: string | null
+          id?: string
+          location: string
+          name: string
+          notes?: string | null
+          phone: string
+          property_type?: string | null
+          service: string
+          status?: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          details?: string
+          email?: string | null
+          follow_up_date?: string | null
+          id?: string
+          location?: string
+          name?: string
+          notes?: string | null
+          phone?: string
+          property_type?: string | null
+          service?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      site_content: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +407,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+    },
   },
 } as const
