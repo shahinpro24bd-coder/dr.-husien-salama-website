@@ -1,0 +1,9 @@
+[
+  {"capability": "code & design", "source": "complete-admin-control-main_1.zip", "outcome": "migrate", "status": "verified", "next_action": "-"},
+  {"capability": "content", "source": "Instagram @dr.husien.salama", "outcome": "replace", "status": "implemented", "next_action": "Owner reviews texts"},
+  {"capability": "schema", "source": "drizzle migrations 0000, 0001", "outcome": "migrate", "status": "verified", "next_action": "-"},
+  {"capability": "records: site_content / invoices / requests", "source": "old QMEP backend", "outcome": "skip", "status": "accepted", "next_action": "Old business data not carried over: site content replaced by owner request"},
+  {"capability": "auth identities", "source": "single admin account", "outcome": "migrate", "status": "pending", "next_action": "Owner runs first-time setup on /auth to choose admin password"},
+  {"capability": "storage bucket site-images", "source": "old backend", "outcome": "migrate", "status": "verified", "next_action": "-"},
+  {"capability": "public endpoint /api/public/img/*", "source": "code", "outcome": "migrate", "status": "implemented", "next_action": "-"}
+]
