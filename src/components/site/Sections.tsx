@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { company, faqs, processSteps, services, whyUs } from "@/lib/site";
+import { company, contactLink, faqs, processSteps, services, whyUs } from "@/lib/site";
 import { SectionTitle } from "./Layout";
-import about1Asset from "@/assets/about-1.webp";
+import about1Asset from "@/assets/ig-dr-portrait-2.jpg";
 const about1 = about1Asset;
-import about2Asset from "@/assets/about-2.webp";
+import about2Asset from "@/assets/ig-dr-desk.jpg";
 const about2 = about2Asset;
 import { T, Co, Img, Icon, useEditable, useList, ItemTools, AddItem, type CompanyField } from "@/lib/editable";
 
@@ -12,7 +12,7 @@ export function ServicesGrid() {
   return (
     <div className="band py-5">
       <div className="container">
-        <SectionTitle k="svcgrid" kicker="Our Core Services" title="Complete MEP Solutions For Your Property" />
+        <SectionTitle k="svcgrid" kicker="Treatments" title="Everything Your Tooth Needs To Stay" />
         <div className="row g-4">
           {services.map((s, i) => (
             <div key={s.slug} className="col-lg-4 col-md-6">
@@ -49,8 +49,8 @@ export function WhyUs() {
         <div className="row g-5 align-items-center">
           <div className="col-lg-6">
             <div className="why-kicker"><span><T k="why.kicker" d="Why Choose Us" line /></span></div>
-            <h1 className="display-5 mb-3"><T k="why.title" d="Practical Solutions. Professional Service. Reliable Support." /></h1>
-            <p className="why-lead mb-4"><T k="why.lead" d="We focus on practical solutions, professional service, and clear communication throughout every stage of a project." /></p>
+            <h1 className="display-5 mb-3"><T k="why.title" d="Diagnosis First. Careful Treatment. Teeth That Last." /></h1>
+            <p className="why-lead mb-4"><T k="why.lead" d="Treating the cause, not just the result — with X-rays, isolation, sterilisation and patience in every step." /></p>
             <div className="row g-3">
               {list.ids.map((id, i) => {
                 const w = list.def(id);
@@ -70,7 +70,7 @@ export function WhyUs() {
               <AddItem list={list} label="Add reason" wrap={(b) => <div className="col-sm-6">{b}</div>} />
             </div>
             <div className="d-flex flex-wrap gap-3 mt-4">
-              <Link to="/about" className="btn btn-primary py-3 px-5"><T k="why.btn" d="More About Our Company" line /></Link>
+              <Link to="/about" className="btn btn-primary py-3 px-5"><T k="why.btn" d="More About the Doctor" line /></Link>
               <a href={company.whatsappHref} target="_blank" rel="noreferrer" className="why-btn-ghost btn py-3 px-4">
                 <i className="fab fa-whatsapp me-2"></i><T k="why.wa" d="Chat on WhatsApp" line />
               </a>
@@ -82,16 +82,16 @@ export function WhyUs() {
               <span className="why-tick why-tick-tr" aria-hidden="true" />
               <span className="why-tick why-tick-bl" aria-hidden="true" />
               <span className="why-tick why-tick-br" aria-hidden="true" />
-              <Img k="why.img1" d={about1} className="why-img-main" alt="MEP engineer on site in Dubai" />
-              <Img k="why.img2" d={about2} className="why-img-sub" alt="VRF indoor unit installation" />
+              <Img k="why.img1" d={about1} className="why-img-main" alt="Dr. Husien Salama in his clinic" />
+              <Img k="why.img2" d={about2} className="why-img-sub" alt="Dr. Husien Salama reviewing a case" />
               <a className="why-badge" href={company.phoneHref}>
                 <span className="why-badge-icon"><Icon k="why.callIcon" d="fa-phone-alt" /></span>
                 <span className="why-badge-text">
-                  <small><T k="why.callLabel" d="Call Our Team" line /></small>
+                  <small><T k="why.callLabel" d="Book Your Visit" line /></small>
                   <strong><Co f="phone" /></strong>
                 </span>
               </a>
-              <span className="why-vert" aria-hidden="true"><T k="why.vert" d="QMEP — MEP Solutions" line /></span>
+              <span className="why-vert" aria-hidden="true"><T k="why.vert" d="Saving Teeth · Baghdad" line /></span>
             </div>
           </div>
         </div>
@@ -111,15 +111,15 @@ export function WhoWeServe({ audiences }: { audiences: Audience[] }) {
         <div className="row g-4 align-items-end">
           <div className="col-lg-7">
             <div className="why-kicker"><span><T k="aud.kicker" d="Who We Serve" line /></span></div>
-            <h1 className="display-5 mb-3"><T k="aud.title" d="Supporting Property Owners, Managers & Contractors" /></h1>
-            <p className="why-lead mb-0"><T k="aud.lead" d="From single villas to commercial facilities, we adapt our MEP services to the property you manage and the way you work." /></p>
+            <h1 className="display-5 mb-3"><T k="aud.title" d="Helping Patients Keep Their Natural Teeth" /></h1>
+            <p className="why-lead mb-0"><T k="aud.lead" d="Whether it is sudden pain, an old root canal that failed or a tooth you were told to extract — come for an honest assessment." /></p>
           </div>
           <div className="col-lg-5">
             <div className="d-flex justify-content-lg-end">
               <a className="aud-call" href={company.phoneHref}>
                 <span className="aud-call-icon"><Icon k="aud.callIcon" d="fa-phone-alt" /></span>
                 <span className="aud-call-text">
-                  <small><T k="aud.callLabel" d="Call Our Team" line /></small>
+                  <small><T k="aud.callLabel" d="Call or WhatsApp" line /></small>
                   <strong><Co f="phone" /></strong>
                 </span>
               </a>
@@ -156,7 +156,7 @@ export function WhoWeServe({ audiences }: { audiences: Audience[] }) {
   );
 }
 
-const processIcons = ["fa-comments", "fa-search", "fa-file-invoice", "fa-tools", "fa-check-circle"];
+const processIcons = ["fa-calendar-check", "fa-x-ray", "fa-clipboard-list", "fa-tooth", "fa-check-circle"];
 
 export function Process() {
   const list = useList("prc", processSteps.map((p, i) => ({ ...p, icon: processIcons[i] ?? "fa-check" })));
@@ -167,11 +167,11 @@ export function Process() {
       <div className="container position-relative py-4">
         <div className="row g-4 align-items-end mb-5">
           <div className="col-lg-7">
-            <div className="why-kicker"><span><T k="prc.kicker" d="Our Work Process" line /></span></div>
-            <h1 className="display-5 mb-0 prc-heading"><T k="prc.title" d="A Clear And Straightforward Approach" /></h1>
+            <div className="why-kicker"><span><T k="prc.kicker" d="Your Visit" line /></span></div>
+            <h1 className="display-5 mb-0 prc-heading"><T k="prc.title" d="Five Steps From Pain To A Saved Tooth" /></h1>
           </div>
           <div className="col-lg-5">
-            <p className="prc-lead mb-0"><T k="prc.lead" d="Five simple steps from your first message to a completed job — transparent, scheduled and fully communicated." /></p>
+            <p className="prc-lead mb-0"><T k="prc.lead" d="From your first call to the final X-ray — every step is explained, planned and done with care." /></p>
           </div>
         </div>
         <div className="prc-track">
@@ -213,10 +213,10 @@ export function Faq() {
             <div className="faq-side">
               <div className="why-kicker"><span><T k="faq.kicker" d="FAQ" line /></span></div>
               <h1 className="display-5 mb-3"><T k="faq.title" d="Frequently Asked Questions" /></h1>
-              <p className="why-lead mb-4"><T k="faq.lead" d="Quick answers about our services, maintenance contracts and how to get a quotation." /></p>
+              <p className="why-lead mb-4"><T k="faq.lead" d="Quick answers about root canals, saving teeth, E.max restorations and booking a visit." /></p>
               <a className="faq-help" href={company.whatsappHref} target="_blank" rel="noreferrer">
                 <span className="faq-help-icon"><i className="fab fa-whatsapp"></i></span>
-                <span><small><T k="faq.helpSmall" d="Still have questions?" line /></small><strong><T k="faq.helpStrong" d="Ask our team" line /></strong></span>
+                <span><small><T k="faq.helpSmall" d="Still have questions?" line /></small><strong><T k="faq.helpStrong" d="Ask on WhatsApp" line /></strong></span>
                 <i className="fa fa-arrow-right ms-auto"></i>
               </a>
             </div>
@@ -244,7 +244,7 @@ export function Faq() {
   );
 }
 
-const propertyTypes = ["Villa", "Apartment", "Residential Building", "Office", "Retail / Commercial", "Other"];
+const propertyTypes = ["Morning (11 AM – 2 PM)", "Afternoon (2 PM – 6 PM)", "Evening (6 PM – 9 PM)", "Any time"];
 
 export function QuoteForm() {
   const c = useEditable();
@@ -272,7 +272,7 @@ export function QuoteForm() {
       <div className="qt-form qt-thanks text-center h-100 d-flex flex-column justify-content-center">
         <Icon k="form.doneIcon" d="fa-check-circle" className="fa-4x text-primary mb-4" />
         <h3><T k="form.thanksTitle" d="Thank You!" line /></h3>
-        <p className="mb-0"><T k="form.thanksText" d="Thank you for contacting QMEP Electromechanical LLC. Your inquiry has been received. Our team will review the information and contact you regarding the next steps." /></p>
+        <p className="mb-0"><T k="form.thanksText" d="Thank you for contacting Dr. Husien Salama. Your request has been received — the clinic will call you to confirm your appointment." /></p>
       </div>
     );
   const h = { height: 55 };
@@ -285,28 +285,28 @@ export function QuoteForm() {
   };
   return (
     <form onSubmit={submit} className="qt-form row g-3 mx-0">
-      <div className="col-12 qt-form-head"><span className="qt-form-tag"><T k="form.tag" d="Free Quotation" line /></span><h3 className="mb-1"><T k="form.title" d="Tell Us About Your Project" /></h3><p className="mb-0"><T k="form.note" d="We usually respond within one working day." /></p></div>
+      <div className="col-12 qt-form-head"><span className="qt-form-tag"><T k="form.tag" d="Appointment Request" line /></span><h3 className="mb-1"><T k="form.title" d="Tell Us About Your Tooth" /></h3><p className="mb-0"><T k="form.note" d="The clinic will call you back to confirm the time." /></p></div>
       <div className="col-12 col-sm-6"><input name="name" required={!c.edit} maxLength={120} {...ph("name", "Full Name")} style={h} /></div>
-      <div className="col-12 col-sm-6"><input name="company" maxLength={120} {...ph("company", "Company Name (Optional)")} style={h} /></div>
+      <div className="col-12 col-sm-6"><input name="company" maxLength={120} {...ph("company", "Age (Optional)")} style={h} /></div>
       <div className="col-12 col-sm-6"><input name="phone" required={!c.edit} maxLength={40} type={c.edit ? "text" : "tel"} {...ph("phone", "Phone Number")} style={h} /></div>
       <div className="col-12 col-sm-6"><input name="email" maxLength={200} type={c.edit ? "text" : "email"} {...ph("email", "Email Address (Optional)")} style={h} /></div>
-      <div className="col-12 col-sm-6"><input name="location" required={!c.edit} maxLength={200} {...ph("location", "Property Location")} style={h} /></div>
+      <div className="col-12 col-sm-6"><input name="location" required={!c.edit} maxLength={200} {...ph("location", "Your Area / Province")} style={h} /></div>
       <div className="col-12 col-sm-6">
         {c.edit ? (
-          <input {...ph("service", "Service Required")} style={h} />
+          <input {...ph("service", "Treatment Needed")} style={h} />
         ) : (
           <select name="service" required className="form-select" style={h} defaultValue="">
-            <option value="" disabled>{c.get("form.ph.service", "Service Required")}</option>
+            <option value="" disabled>{c.get("form.ph.service", "Treatment Needed")}</option>
             {services.map((s) => <option key={s.slug}>{s.title}</option>)}
-            <option>{c.get("form.other", "Other")}</option>
+            <option>{c.get("form.other", "Not sure — need a check-up")}</option>
           </select>
         )}
       </div>
       <div className="col-12">
         {c.edit ? (
           <div className="cms-options">
-            <input {...ph("ptype", "Property Type")} style={h} />
-            <small className="d-block mt-2 mb-1">Property type choices:</small>
+            <input {...ph("ptype", "Preferred Time")} style={h} />
+            <small className="d-block mt-2 mb-1">Preferred time choices:</small>
             {ptypes.ids.map((id) => (
               <span key={id} className="cms-option"><T k={`form.ptype.${id}`} d={ptypes.def(id)} line /><ItemTools list={ptypes} id={id} /></span>
             ))}
@@ -314,32 +314,32 @@ export function QuoteForm() {
           </div>
         ) : (
           <select name="property_type" className="form-select" style={h} defaultValue="">
-            <option value="" disabled>{c.get("form.ph.ptype", "Property Type")}</option>
+            <option value="" disabled>{c.get("form.ph.ptype", "Preferred Time")}</option>
             {ptypes.ids.map((id) => { const v = c.get(`form.ptype.${id}`, ptypes.def(id)); return <option key={id}>{v}</option>; })}
           </select>
         )}
       </div>
       <div className="col-12">
         {c.edit
-          ? <textarea rows={2} {...ph("details", "Project Details")} />
-          : <textarea name="details" required maxLength={3000} className="form-control" rows={5} placeholder={c.get("form.ph.details", "Project Details")}></textarea>}
+          ? <textarea rows={2} {...ph("details", "Describe your problem (pain, swelling, old treatment…)")} />
+          : <textarea name="details" required maxLength={3000} className="form-control" rows={5} placeholder={c.get("form.ph.details", "Describe your problem (pain, swelling, old treatment…)")}></textarea>}
       </div>
       {c.edit && (
         <div className="col-12 cms-options">
           <small className="d-block mb-1">Service list's last choice:</small>
-          <T k="form.other" d="Other" line />
+          <T k="form.other" d="Not sure — need a check-up" line />
           <small className="d-block mt-3 mb-1">Button text while sending:</small>
           <T k="form.sending" d="Sending…" line />
           <small className="d-block mt-3 mb-1">Message if sending fails:</small>
-          <T k="form.error" d="Sorry, we couldn't send your request. Please try again or call us." />
+          <T k="form.error" d="Sorry, we couldn't send your request. Please try again or call 0774 444 4992." />
           <small className="d-block mt-3 mb-1">Thank-you message after sending (click the tick to change it):</small>
           <div className="text-center"><Icon k="form.doneIcon" d="fa-check-circle" className="fa-3x text-primary mb-2" /></div>
           <T k="form.thanksTitle" d="Thank You!" line />
-          <T k="form.thanksText" d="Thank you for contacting QMEP Electromechanical LLC. Your inquiry has been received. Our team will review the information and contact you regarding the next steps." />
+          <T k="form.thanksText" d="Thank you for contacting Dr. Husien Salama. Your request has been received — the clinic will call you to confirm your appointment." />
         </div>
       )}
       {err && <div className="col-12 text-danger">{err}</div>}
-      <div className="col-12"><button className="btn btn-primary w-100 py-3" type="submit" disabled={busy}>{busy ? c.get("form.sending", "Sending…") : <T k="form.button" d="Request My Quote" line />}</button></div>
+      <div className="col-12"><button className="btn btn-primary w-100 py-3" type="submit" disabled={busy}>{busy ? c.get("form.sending", "Sending…") : <T k="form.button" d="Request My Appointment" line />}</button></div>
     </form>
   );
 }
@@ -350,13 +350,13 @@ export function QuoteSection() {
       <div className="container py-4">
         <div className="row g-5 align-items-center">
           <div className="col-lg-5">
-            <div className="why-kicker"><span><T k="qt.kicker" d="Request a Quote" line /></span></div>
-            <h1 className="display-5 mb-4"><T k="qt.title" d="Need Professional MEP Support?" /></h1>
-            <p className="why-lead mb-4"><T k="qt.lead" d="From air conditioning and electrical work to plumbing and planned maintenance, QMEP Electromechanical LLC is ready to discuss your requirements. Tell us about your property or project, and let us help you identify the next steps." /></p>
+            <div className="why-kicker"><span><T k="qt.kicker" d="Book An Appointment" line /></span></div>
+            <h1 className="display-5 mb-4"><T k="qt.title" d="Does Your Tooth Need Help?" /></h1>
+            <p className="why-lead mb-4"><T k="qt.lead" d="Send your details and a short description of the problem. Dr. Husien Salama's clinic in Al-Mansour, Baghdad will contact you to arrange your visit — open daily from 11 AM to 9 PM." /></p>
             <div className="row g-3">
-              <ContactLine icon="fa-phone-alt" k="qt.l1" label="Call Our Team" value={company.phone} field="phone" href={company.phoneHref} />
+              <ContactLine icon="fa-phone-alt" k="qt.l1" label="Call the Clinic" value={company.phone} field="phone" href={company.phoneHref} />
               <ContactLine icon="fa-whatsapp" brand k="qt.l2" label="Chat on WhatsApp" value="Message Us Now" editValue href={company.whatsappHref} />
-              <ContactLine icon="fa-envelope-open" k="qt.l3" label="Mail Us Now" value={company.email} field="email" href={`mailto:${company.email}`} />
+              <ContactLine icon="fa-at" k="qt.l3" label="Clinic Instagram" value={company.email} field="email" href={contactLink(company.email)} />
             </div>
           </div>
           <div className="col-lg-7"><QuoteForm /></div>
@@ -379,7 +379,7 @@ export function ContactLine({ icon, label, value, href, brand, k, editValue, fie
   );
 }
 
-export function CtaBanner({ title, text, button, k, kicker = "Annual Maintenance" }: { title: string; text: string; button: string; k?: string | undefined; kicker?: string }) {
+export function CtaBanner({ title, text, button, k, kicker = "Book Your Visit" }: { title: string; text: string; button: string; k?: string | undefined; kicker?: string }) {
   return (
     <div className="band py-5">
       <div className="container">
