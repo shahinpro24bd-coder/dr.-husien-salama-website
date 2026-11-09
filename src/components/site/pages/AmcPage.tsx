@@ -41,7 +41,7 @@ function Plans({ list }: { list: List<(typeof plans)[number]> }) {
           </div>
         );
       })}
-      <AddItem list={list} label="Add package" wrap={(b) => <div className="col-lg-4" style={{ marginTop: 70 }}>{b}</div>} />
+      <AddItem list={list} label="Add plan" wrap={(b) => <div className="col-lg-4" style={{ marginTop: 70 }}>{b}</div>} />
     </>
   );
 }

@@ -51,7 +51,7 @@ export function IndustriesPage() {
                 </article>
               );
             })}
-            <AddItem list={items} label="Add industry" />
+            <AddItem list={items} label="Add case type" />
             <Link to="/contact" className="ind-card ind-card--cta">
               <span className="ind-kicker"><T k="ind.cta.kicker" d="Not listed?" line /></span>
               <h3 className="ind-card-title"><T k="ind.cta.title" d="Tell us about your tooth" /></h3>

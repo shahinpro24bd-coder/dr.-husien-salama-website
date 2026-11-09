@@ -143,7 +143,7 @@ export function AboutPage() {
                 </div>
               );
             })}
-            <AddItem list={pillarList} label="Add discipline" />
+            <AddItem list={pillarList} label="Add step" />
           </div>
         </div>
       </section>
