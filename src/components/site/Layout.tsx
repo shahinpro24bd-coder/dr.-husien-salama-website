@@ -1,8 +1,8 @@
 import { T, Co, Icon, useEditable, safeImg } from "@/lib/editable";
-import qmepLogo from "@/assets/qmep-logo.png";
+import drLogo from "@/assets/dr-logo.png";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { company, services } from "@/lib/site";
+import { company, contactLink, services } from "@/lib/site";
 
 
 export function Topbar() {
@@ -15,8 +15,8 @@ export function Topbar() {
               <Icon k="top.phoneIcon" d="fa-phone-alt" className="text-primary me-2" />
               <Co f="phone" />
             </a>
-            <a className="text-body px-2" href={`mailto:${company.email}`}>
-              <Icon k="top.emailIcon" d="fa-envelope-open" className="text-primary me-2" />
+            <a className="text-body px-2" href={contactLink(company.email)} target="_blank" rel="noreferrer">
+              <Icon k="top.emailIcon" d="fa-at" className="text-primary me-2" />
               <Co f="email" />
             </a>
           </div>
@@ -43,13 +43,13 @@ export function Topbar() {
 const navLinks = [
   { to: "/", label: "Home", k: "nav.home", exact: true },
   { to: "/about", label: "About", k: "nav.about" },
-  { to: "/services", label: "Services", k: "nav.services" },
-  { to: "/projects", label: "Projects", k: "nav.projects" },
+  { to: "/services", label: "Treatments", k: "nav.services" },
+  { to: "/projects", label: "Cases", k: "nav.projects" },
 ] as const;
 
 const moreLinks = [
-  { to: "/amc", label: "AMC Packages", k: "nav.amc", desc: "Annual maintenance plans", icon: "fa-file-contract" },
-  { to: "/industries", label: "Industries We Serve", k: "nav.industries", desc: "Residential, commercial & more", icon: "fa-industry" },
+  { to: "/amc", label: "Treatment Plans", k: "nav.amc", desc: "From check-up to full rescue", icon: "fa-clipboard-list" },
+  { to: "/industries", label: "Who We Treat", k: "nav.industries", desc: "Pain, failed root canals & more", icon: "fa-user-md" },
 ] as const;
 
 const contactLink = { to: "/contact", label: "Contact", k: "nav.contact" } as const;
@@ -72,7 +72,7 @@ function Socials({ cls }: { cls: string }) {
 
 function Logo() {
   const c = useEditable();
-  return <img src={safeImg(c.get("site.logo", qmepLogo), qmepLogo)} alt="QMEP — Where Quality Meets Speed" className={`qn-logo ${c.edit ? "cms-img" : ""}`}
+  return <img src={safeImg(c.get("site.logo", drLogo), drLogo)} alt="Dr. Husien Salama — Dentist, Baghdad" className={`qn-logo ${c.edit ? "cms-img" : ""}`}
     title={c.edit ? "Click to change logo" : undefined}
     onClick={c.edit ? (e) => { e.preventDefault(); e.stopPropagation(); c.pick("site.logo"); } : undefined} />;
 }
@@ -98,7 +98,7 @@ export function Navbar() {
     <>
       <header className={`qn ${scrolled ? "qn--scrolled" : ""}`}>
         <div className="qn-inner">
-          <Link to="/" className="qn-brand" onClick={close} aria-label="QMEP home">
+          <Link to="/" className="qn-brand" onClick={close} aria-label="Dr. Husien Salama home">
             <Logo />
 
           </Link>
@@ -130,10 +130,10 @@ export function Navbar() {
           <div className="qn-actions">
             <a href={company.phoneHref} className="qn-call">
               <span className="qn-call-icon"><Icon k="nav.callIcon" d="fa-phone-alt" /></span>
-              <span className="qn-call-text"><small><T k="nav.callLabel" d="Call 24/7" line /></small><strong><Co f="phone" /></strong></span>
+              <span className="qn-call-text"><small><T k="nav.callLabel" d="Book Daily 11am–9pm" line /></small><strong><Co f="phone" /></strong></span>
             </a>
             <Link to="/contact" className="qn-cta">
-              <span><T k="nav.cta" d="Free Quote" line /></span><i className="fa fa-arrow-right"></i>
+              <span><T k="nav.cta" d="Book a Visit" line /></span><i className="fa fa-arrow-right"></i>
             </Link>
             <button type="button" className={`qn-burger ${open ? "is-open" : ""}`} aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>
               <span></span><span></span><span></span>
@@ -202,7 +202,7 @@ export function Footer() {
       <span className="ft-glow" aria-hidden="true" />
       <div className="container ft-top">
         <div className="ft-cta">
-          <div><span className="ft-cta-kicker"><T k="footer.kicker" d="Get In Touch" line /></span><h2 className="mb-0"><T k="footer.title" d="Ready to discuss your MEP requirements?" /></h2></div>
+          <div><span className="ft-cta-kicker"><T k="footer.kicker" d="Get In Touch" line /></span><h2 className="mb-0"><T k="footer.title" d="Tooth pain? Let's try to save your tooth first." /></h2></div>
           <div className="d-flex flex-wrap gap-2">
             <a href={company.phoneHref} className="btn btn-primary py-3 px-4"><Icon k="footer.callIcon" d="fa-phone-alt" className="me-2" /><Co f="phone" /></a>
             <a href={company.whatsappHref} target="_blank" rel="noreferrer" className="btn ft-ghost py-3 px-4"><i className="fab fa-whatsapp me-2"></i><T k="footer.wa" d="WhatsApp" line /></a>
@@ -212,15 +212,15 @@ export function Footer() {
       <div className="container py-5">
         <div className="row g-5">
           <div className="col-lg-3 col-md-6">
-            <h3 className="text-light mb-4 ft-h"><T k="footer.brand" d="QMEP Electromechanical" line /></h3>
-            <p><T k="footer.about" d="Professional MEP, HVAC, electrical, plumbing, and maintenance solutions for residential and commercial projects." /></p>
+            <h3 className="text-light mb-4 ft-h"><T k="footer.brand" d="Dr. Husien Salama" line /></h3>
+            <p><T k="footer.about" d="د. حسين سلامة — dentist in Baghdad focused on saving teeth: root canal treatment, retreatment, E.max lab restorations and rebuilding broken teeth at Clear Dental Care, Al-Mansour." /></p>
             <div className="d-flex pt-2">
               <a className="btn btn-square btn-outline-body me-1" href={company.whatsappHref} target="_blank" rel="noreferrer" aria-label="WhatsApp"><i className="fab fa-whatsapp"></i></a>
               <Socials cls="btn btn-square btn-outline-body me-1" />
             </div>
           </div>
           <div className="col-lg-3 col-md-6">
-            <h3 className="text-light mb-4 ft-h"><T k="footer.svcTitle" d="Our Services" line /></h3>
+            <h3 className="text-light mb-4 ft-h"><T k="footer.svcTitle" d="Treatments" line /></h3>
             {services.map((s, n) => (
               <Link key={s.slug} className="btn btn-link" to="/services/$slug" params={{ slug: s.slug }}><T k={`services.${n}.title`} d={s.title} line /></Link>
             ))}
@@ -229,10 +229,10 @@ export function Footer() {
             <h3 className="text-light mb-4 ft-h"><T k="footer.linksTitle" d="Quick Links" line /></h3>
             <Link className="btn btn-link" to="/"><T k="footer.link.home" d="Home" line /></Link>
             <Link className="btn btn-link" to="/about"><T k="footer.link.about" d="About Us" line /></Link>
-            <Link className="btn btn-link" to="/services"><T k="footer.link.services" d="Services" line /></Link>
-            <Link className="btn btn-link" to="/projects"><T k="footer.link.projects" d="Projects" line /></Link>
-            <Link className="btn btn-link" to="/amc"><T k="footer.link.amc" d="AMC Packages" line /></Link>
-            <Link className="btn btn-link" to="/industries"><T k="footer.link.industries" d="Industries We Serve" line /></Link>
+            <Link className="btn btn-link" to="/services"><T k="footer.link.services" d="Treatments" line /></Link>
+            <Link className="btn btn-link" to="/projects"><T k="footer.link.projects" d="Patient Cases" line /></Link>
+            <Link className="btn btn-link" to="/amc"><T k="footer.link.amc" d="Treatment Plans" line /></Link>
+            <Link className="btn btn-link" to="/industries"><T k="footer.link.industries" d="Who We Treat" line /></Link>
             <Link className="btn btn-link" to="/contact"><T k="footer.link.contact" d="Contact Us" line /></Link>
           </div>
           <div className="col-lg-3 col-md-6">
@@ -240,7 +240,8 @@ export function Footer() {
             <p className="mb-2"><Icon k="footer.addrIcon" d="fa-map-marker-alt" className="text-primary me-3" /><Co f="address" /></p>
             <p className="mb-2"><Icon k="footer.phoneIcon" d="fa-phone-alt" className="text-primary me-3" /><Co f="phone" /></p>
             <p className="mb-2"><i className="fab fa-whatsapp text-primary me-3"></i><a className="text-body" href={company.whatsappHref} target="_blank" rel="noreferrer"><T k="footer.waUs" d="WhatsApp Us" line /></a></p>
-            <p className="mb-2"><Icon k="footer.emailIcon" d="fa-envelope" className="text-primary me-3" /><Co f="email" /></p>
+            <p className="mb-2"><Icon k="footer.emailIcon" d="fa-at" className="text-primary me-3" /><a className="text-body" href={contactLink(company.email)} target="_blank" rel="noreferrer"><Co f="email" /></a></p>
+            <p className="mb-2"><Icon k="footer.hoursIcon" d="fa-clock" className="text-primary me-3" /><Co f="hours" /></p>
           </div>
         </div>
       </div>
@@ -250,7 +251,7 @@ export function Footer() {
             <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
               <T k="footer.copy" d="©" line /> {new Date().getFullYear()} <Link to="/"><Co f="name" /></Link>. <T k="footer.rights" d="All Rights Reserved." line />
             </div>
-            <div className="col-md-6 text-center text-md-end"><T k="footer.location" d="Dubai, United Arab Emirates" line /></div>
+            <div className="col-md-6 text-center text-md-end"><T k="footer.location" d="Al-Mansour, Baghdad, Iraq" line /></div>
           </div>
         </div>
       </div>

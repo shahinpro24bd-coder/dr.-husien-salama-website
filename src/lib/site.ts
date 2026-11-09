@@ -21,6 +21,14 @@ export const company = {
   mapQuery: "14 Ramadan Street, Al-Mansour, Baghdad, Iraq",
 };
 
+/** Link for the "email" contact field: an @handle opens Instagram, an address opens the mail app. */
+export function contactLink(v: string) {
+  const s = v.trim();
+  if (s.startsWith("@")) return `https://www.instagram.com/${s.slice(1)}/`;
+  if (/^https?:\/\//.test(s)) return s;
+  return `mailto:${s}`;
+}
+
 export type Service = {
   slug: string;
   title: string;
