@@ -241,7 +241,6 @@ export function Footer() {
             <p className="mb-2"><Icon k="footer.phoneIcon" d="fa-phone-alt" className="text-primary me-3" /><Co f="phone" /></p>
             <p className="mb-2"><i className="fab fa-whatsapp text-primary me-3"></i><a className="text-body" href={company.whatsappHref} target="_blank" rel="noreferrer"><T k="footer.waUs" d="WhatsApp Us" line /></a></p>
             <p className="mb-2"><Icon k="footer.emailIcon" d="fa-at" className="text-primary me-3" /><a className="text-body" href={contactLink(company.email)} target="_blank" rel="noreferrer"><Co f="email" /></a></p>
-            <p className="mb-2"><Icon k="footer.hoursIcon" d="fa-clock" className="text-primary me-3" /><Co f="hours" /></p>
           </div>
         </div>
       </div>
