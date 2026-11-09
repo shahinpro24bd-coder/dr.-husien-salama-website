@@ -11,7 +11,7 @@ import { ContactPage } from "@/components/site/pages/ContactPage";
 import { ServiceDetailPage } from "@/components/site/pages/ServiceDetailPage";
 
 const ctx = { edit: true, get: (_k: string, d: string) => d, set() {}, pick() {} };
-const pages = { AboutPage, ServicesPage, AmcPage, ProjectsPage, IndustriesPage, ContactPage, Detail: () => <ServiceDetailPage slug="hvac" /> };
+const pages = { AboutPage, ServicesPage, AmcPage, ProjectsPage, IndustriesPage, ContactPage, Detail: () => <ServiceDetailPage slug="root-canal" /> };
 
 describe("page editor", () => {
   for (const [name, P] of Object.entries(pages)) {

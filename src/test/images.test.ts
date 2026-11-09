@@ -3,9 +3,9 @@ import { resolveImg } from "@/lib/images";
 
 describe("resolveImg (photos must work on any host, e.g. Vercel)", () => {
   it("swaps an old hosted photo address for the photo shipped with the site", () => {
-    const out = resolveImg("/__l5e/assets-v1/91d157ea-7e09-4232-93a2-e449cd9ed50a/service-hvac.webp", "fallback");
+    const out = resolveImg("/__l5e/assets-v1/91d157ea-7e09-4232-93a2-e449cd9ed50a/service-root-canal.jpg", "fallback");
     expect(out).not.toContain("__l5e");
-    expect(out).toContain("service-hvac");
+    expect(out).toContain("service-root-canal");
   });
 
   it("uses the fallback when an old address names a photo the site does not ship", () => {

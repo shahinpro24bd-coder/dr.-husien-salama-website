@@ -8,6 +8,12 @@ describe("changing the phone number on a page", () => {
     expect(co.phoneHref).toBe("tel:+971501234567");
     expect(co.whatsappHref).toBe("https://wa.me/971501234567");
   });
+  it("turns an Iraqi local number (0774 …) into +964 links", () => {
+    const co = withPhone({ ...defaults.company }, "0774 444 4992");
+    expect(co.phone).toBe("0774 444 4992");
+    expect(co.phoneHref).toBe("tel:+9647744444992");
+    expect(co.whatsappHref).toBe("https://wa.me/9647744444992");
+  });
   it("keeps the old links while the box is emptied", () => {
     const co = withPhone({ ...defaults.company }, "");
     expect(co.phoneHref).toBe(defaults.company.phoneHref);
