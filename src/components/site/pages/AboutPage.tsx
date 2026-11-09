@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import hero1Asset from "@/assets/hero-1.webp";
-import about1Asset from "@/assets/about-1.webp";
-import about2Asset from "@/assets/about-2.webp";
-import buildingsAsset from "@/assets/buildings.webp";
-import hvacImgAsset from "@/assets/service-hvac.webp";
-import elecImgAsset from "@/assets/service-electrical.webp";
-import plumbImgAsset from "@/assets/service-plumbing.webp";
+import hero1Asset from "@/assets/hero-1.jpg";
+import about1Asset from "@/assets/ig-dr-clinic.jpg";
+import about2Asset from "@/assets/ig-dr-microscope.jpg";
+import buildingsAsset from "@/assets/buildings.jpg";
+import hvacImgAsset from "@/assets/ig-case-molar-rct.jpg";
+import elecImgAsset from "@/assets/ig-case-margin-elevation.jpg";
+import plumbImgAsset from "@/assets/ig-case-emax-restoration.jpg";
 import { PageHeader } from "@/components/site/Layout";
 import { services } from "@/lib/site";
 import { T, Img, Icon, useEditable, useList, ItemTools, AddItem, safeImg } from "@/lib/editable";
@@ -26,27 +26,27 @@ const about2 = about2Asset;
 const buildings = buildingsAsset;
 
 const pillars = [
-  { letter: "M", word: "Mechanical", img: hvacImgAsset, text: "Air conditioning, ventilation and VRF/VRV systems that keep spaces comfortable all year.", items: ["AC & HVAC", "VRF/VRV", "Ventilation"] },
-  { letter: "E", word: "Electrical", img: elecImgAsset, text: "Installation, upgrades and fault-finding for safe, dependable power and lighting.", items: ["Power & DB", "Lighting", "Inspections"] },
-  { letter: "P", word: "Plumbing", img: plumbImgAsset, text: "Water supply, drainage and leak repairs that protect your property from damage.", items: ["Water supply", "Drainage", "Leak repair"] },
+  { letter: "D", word: "Diagnose", img: hvacImgAsset, text: "X-rays and a careful examination show the real problem — infection, bone loss or decay under old fillings.", items: ["Dental X-rays", "Examination", "Clear plan"] },
+  { letter: "T", word: "Treat", img: elecImgAsset, text: "Root canals, retreatments and rebuilding broken teeth under rubber dam isolation with sterile instruments.", items: ["Root canals", "Retreatment", "Fibre posts"] },
+  { letter: "R", word: "Restore", img: plumbImgAsset, text: "Strong, natural-looking E.max lab restorations protect the treated tooth and bring back a natural smile.", items: ["E.max inlays", "Onlays", "Crowns"] },
 ];
 
 const approach = [
-  { icon: "fa-comments", title: "Listen First", text: "We start by understanding your property, your systems and what you actually need." },
-  { icon: "fa-search", title: "Assess Honestly", text: "We inspect, explain what we find, and recommend only the work that makes sense." },
-  { icon: "fa-file-signature", title: "Agree the Scope", text: "Clear scope, timeline and pricing in writing before any work begins." },
-  { icon: "fa-tools", title: "Deliver With Care", text: "Clean, careful workmanship with respect for your property and occupants." },
-  { icon: "fa-handshake", title: "Stay in Touch", text: "Follow-up, records and maintenance advice to keep systems running well." },
+  { icon: "fa-comments", title: "Listen First", text: "We start by hearing what you feel — pain, sensitivity, swelling — and your dental history." },
+  { icon: "fa-x-ray", title: "See Beneath", text: "X-rays show what the eye cannot: infection at the root, old treatments and hidden decay." },
+  { icon: "fa-clipboard-list", title: "Explain the Plan", text: "You see your images and understand the options, visits and cost before we begin." },
+  { icon: "fa-tooth", title: "Treat With Care", text: "Rubber dam isolation, sterile tools and step-by-step work — even in the hardest cases." },
+  { icon: "fa-smile", title: "Follow Up", text: "A final X-ray and follow-up make sure the tooth heals and the result lasts." },
 ];
 
-const clients = ["Villa Owners", "Apartment Residents", "Landlords", "Property Managers", "Facility Managers", "Offices", "Retail Spaces", "Fit-Out Contractors", "Main Contractors"];
+const clients = ["Toothache & Swelling", "Deep Decay", "Failed Root Canals", "Broken Instruments", "Curved Canals", "Broken Teeth", "Old Fillings", "Second Opinions", "Patients From Other Provinces"];
 
 const values = [
-  { icon: "fa-award", title: "Quality", text: "Focus on workmanship and applicable technical requirements." },
-  { icon: "fa-balance-scale", title: "Integrity", text: "Communicate honestly about services, pricing, and project scope." },
-  { icon: "fa-hard-hat", title: "Responsibility", text: "Approach each assignment with care and professionalism." },
-  { icon: "fa-user-check", title: "Customer Focus", text: "Understand client requirements before recommending solutions." },
-  { icon: "fa-chart-line", title: "Continuous Improvement", text: "Seek better ways to deliver effective and efficient services." },
+  { icon: "fa-tooth", title: "Save the Tooth", text: "Extraction is the last option. Every effort goes into keeping your natural tooth." },
+  { icon: "fa-balance-scale", title: "Honesty", text: "Sometimes the best treatment is no treatment — like arrested decay that only needs monitoring." },
+  { icon: "fa-shield-alt", title: "Safety & Sterility", text: "Rubber dam isolation and correct sterilisation in every procedure." },
+  { icon: "fa-search-plus", title: "Precision", text: "Attention to the smallest details, because they decide how long a treatment lasts." },
+  { icon: "fa-graduation-cap", title: "Always Learning", text: "Modern techniques like deep margin elevation and band modification, shared with colleagues too." },
 ];
 
 export function AboutPage() {
@@ -60,7 +60,7 @@ export function AboutPage() {
   const stepWord = c.get("about.stepWord", "Step");
   return (
     <>
-      <PageHeader k="about" title="About Us" crumb="About" image={hero1} />
+      <PageHeader k="about" title="About the Doctor" crumb="About" image={hero1} />
       <div className="band py-5 ab-section">
         <div className="ab-gridbg" aria-hidden="true" />
         <div className="container position-relative">
@@ -70,18 +70,18 @@ export function AboutPage() {
                 <span className="ab-frame" aria-hidden="true" />
                 <span className="why-tick why-tick-tl" aria-hidden="true" />
                 <span className="why-tick why-tick-tr" aria-hidden="true" />
-                <Img k="about.img1" d={about1} className="ab-img-main" alt="MEP engineer on a Dubai project" />
-                <Img k="about.img2" d={about2} className="ab-img-sub" alt="AC technician at work" />
-                <span className="ab-vert" aria-hidden="true"><T k="about.vert" d="QMEP · Dubai · UAE" line /></span>
+                <Img k="about.img1" d={about1} className="ab-img-main" alt="Dr. Husien Salama at Clear Dental Care, Baghdad" />
+                <Img k="about.img2" d={about2} className="ab-img-sub" alt="Dr. Husien Salama treating under the dental microscope" />
+                <span className="ab-vert" aria-hidden="true"><T k="about.vert" d="Dr. Husien Salama · Baghdad" line /></span>
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="why-kicker"><span><T k="about.kicker" d="About QMEP" line /></span></div>
-              <h1 className="display-5 mb-3"><T k="about.title" d="Supporting Better-Performing Buildings Through MEP Solutions" /></h1>
-              <p className="ab-lead mb-4"><T k="about.lead" d="QMEP Electromechanical LLC is an electromechanical services company focused on building systems, maintenance, and technical service requirements." /></p>
-              <p className="ab-text mb-3"><T k="about.p1" d="We understand that properly functioning mechanical, electrical, and plumbing systems are essential to the comfort, safety, and day-to-day operation of a property." /></p>
-              <p className="ab-text mb-4"><T k="about.p2" d="Our approach is built around understanding each client's needs, discussing practical solutions, and carrying out work according to the agreed project scope — building long-term relationships through clear communication and a commitment to quality." /></p>
-              <Link className="btn btn-primary py-3 px-5" to="/contact"><T k="about.btn" d="Talk to Our Team" line /></Link>
+              <div className="why-kicker"><span><T k="about.kicker" d="About Dr. Husien" line /></span></div>
+              <h1 className="display-5 mb-3"><T k="about.title" d="د. حسين سلامة — The Dentist Who Saves Teeth" /></h1>
+              <p className="ab-lead mb-4"><T k="about.lead" d="Dr. Husien Salama is a dentist in Baghdad, Iraq, holding a Diploma in Dental Treatment from the ADA. He treats patients at Clear Dental Care in Al-Mansour." /></p>
+              <p className="ab-text mb-3"><T k="about.p1" d="His focus is saving teeth: root canal treatment, difficult retreatments, rebuilding broken teeth and protecting them with E.max lab restorations. Patients come to him from all over Baghdad and from other provinces." /></p>
+              <p className="ab-text mb-4"><T k="about.p2" d="He believes the right treatment at the right time changes the future of a tooth — and that the outside of a tooth can look healthy while the roots are infected. That is why every case starts with X-rays and every treatment is done under rubber dam isolation with proper sterilisation." /></p>
+              <Link className="btn btn-primary py-3 px-5" to="/contact"><T k="about.btn" d="Book With Dr. Husien" line /></Link>
             </div>
           </div>
         </div>
@@ -103,18 +103,18 @@ export function AboutPage() {
               <span className="abx-mv-icon"><Icon k="about.mission.icon" d="fa-bullseye" /></span>
               <span className="ind-kicker"><T k="about.mission.kicker" d="What drives us" line /></span>
               <h2><T k="about.mission.title" d="Our Mission" line /></h2>
-              <p><T k="about.mission.text" d="To provide practical and dependable electromechanical solutions that help our clients maintain functional, comfortable, and well-maintained properties." /></p>
+              <p><T k="about.mission.text" d="To save every tooth that can be saved — treating the cause, not just the symptom, so patients leave pain-free and happy with the result." /></p>
             </div>
             <div className="abx-mv-img">
-              <Img k="about.mv.image" d={buildings} alt="Dubai buildings" />
-              <span className="abx-mv-tag"><T k="about.mv.tag" d="Dubai · UAE" line /></span>
+              <Img k="about.mv.image" d={buildings} alt="Al-Mansour, Baghdad" />
+              <span className="abx-mv-tag"><T k="about.mv.tag" d="Al-Mansour · Baghdad" line /></span>
             </div>
             <div className="abx-mv-card">
               <span className="abx-mv-word" aria-hidden="true"><T k="about.vision.word" d="Vision" line /></span>
               <span className="abx-mv-icon"><Icon k="about.vision.icon" d="fa-eye" /></span>
               <span className="ind-kicker"><T k="about.vision.kicker" d="Where we're going" line /></span>
               <h2><T k="about.vision.title" d="Our Vision" line /></h2>
-              <p><T k="about.vision.text" d="To build lasting client relationships and become a trusted choice for MEP and maintenance solutions through consistent service and professional development." /></p>
+              <p><T k="about.vision.text" d="To be the trusted name in Iraq for saving teeth — through careful work, honest advice and modern techniques shared openly with patients and colleagues." /></p>
             </div>
           </div>
         </div>
@@ -123,8 +123,8 @@ export function AboutPage() {
       <section className="abx-pillars">
         <div className="container">
           <div className="abx-head">
-            <span className="ind-kicker"><T k="about.pillars.kicker" d="What We Do" line /></span>
-            <h2 className="sd-title text-white"><T k="about.pillars.title" d="Three Disciplines." line /> <em><T k="about.pillars.em" d="One Team." line /></em></h2>
+            <span className="ind-kicker"><T k="about.pillars.kicker" d="How I Work" line /></span>
+            <h2 className="sd-title text-white"><T k="about.pillars.title" d="Three Steps." line /> <em><T k="about.pillars.em" d="One Goal: Your Tooth." line /></em></h2>
           </div>
           <div className="abx-pillar-grid">
             {pillarList.ids.map((id) => {
@@ -154,8 +154,8 @@ export function AboutPage() {
             <div className="col-lg-4">
               <div className="abx-sticky">
                 <span className="ind-kicker"><T k="about.values.kicker" d="Core Values" line /></span>
-                <h2 className="sd-title"><T k="about.values.title" d="What Guides Every Project" /></h2>
-                <p><T k="about.values.lead" d="Five principles shape how we quote, how we work and how we treat every property we step into." /></p>
+                <h2 className="sd-title"><T k="about.values.title" d="What Guides Every Treatment" /></h2>
+                <p><T k="about.values.lead" d="Five principles shape how Dr. Husien diagnoses, treats and follows up every patient." /></p>
                 <span className="abx-values-big" aria-hidden="true">{String(valueList.ids.length).padStart(2, "0")}</span>
               </div>
             </div>
@@ -182,7 +182,7 @@ export function AboutPage() {
         <div className="container">
           <div className="abx-head text-center mx-auto">
             <span className="ind-kicker"><T k="about.approach.kicker" d="Our Approach" line /></span>
-            <h2 className="sd-title"><T k="about.approach.title" d="How We Work With You" /></h2>
+            <h2 className="sd-title"><T k="about.approach.title" d="Your Journey With Us" /></h2>
           </div>
           <div className="abx-path">
             {stepList.ids.map((id, i) => {
@@ -206,8 +206,8 @@ export function AboutPage() {
         <div className="container">
           <div className="abx-clients-box">
             <div>
-              <span className="ind-kicker"><T k="about.clients.kicker" d="Who We Work With" line /></span>
-              <h2 className="sd-title mb-0"><T k="about.clients.title" d="From single homes to commercial sites" /></h2>
+              <span className="ind-kicker"><T k="about.clients.kicker" d="Cases We Treat" line /></span>
+              <h2 className="sd-title mb-0"><T k="about.clients.title" d="From simple decay to the hardest root canals" /></h2>
             </div>
             <div className="abx-chips">
               {clientList.ids.map((id) => <span key={id}><Icon k="about.client.icon" d="fa-check" /><T k={`about.client.${id}`} d={clientList.def(id)} line />{c.edit && <ItemTools list={clientList} id={id} />}</span>)}
@@ -223,10 +223,10 @@ export function AboutPage() {
           <div className="abx-commit-inner">
             <Icon k="about.commit.icon" d="fa-quote-left" className="abx-quote" />
             <span className="ind-kicker"><T k="about.commit.kicker" d="Our Commitment" line /></span>
-            <p className="abx-commit-text"><T k="about.commit.text" d="Every property has different requirements. We aim to understand those requirements, explain the available options, and agree on a clear scope of work before starting a project." /></p>
+            <p className="abx-commit-text"><T k="about.commit.text" d="Saving the tooth is my mission. Every patient deserves an honest diagnosis, careful treatment and a result that makes them smile. — Dr. Husien Salama" /></p>
             <div className="d-flex flex-wrap gap-2 justify-content-center">
-              <Link className="btn btn-primary py-3 px-5" to="/contact"><T k="about.commit.btn1" d="Talk to Our Team" line /></Link>
-              <Link className="btn ft-ghost py-3 px-5" to="/services"><T k="about.commit.btn2" d="Explore Services" line /></Link>
+              <Link className="btn btn-primary py-3 px-5" to="/contact"><T k="about.commit.btn1" d="Book an Appointment" line /></Link>
+              <Link className="btn ft-ghost py-3 px-5" to="/services"><T k="about.commit.btn2" d="See Treatments" line /></Link>
             </div>
           </div>
         </div>

@@ -19,8 +19,8 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
   if (!s) {
     return (
       <div className="container py-5 text-center">
-        <h1 className="display-5">Service not found</h1>
-        <Link to="/services" className="btn btn-primary mt-3 py-3 px-5">View All Services</Link>
+        <h1 className="display-5">Treatment not found</h1>
+        <Link to="/services" className="btn btn-primary mt-3 py-3 px-5">View All Treatments</Link>
       </div>
     );
   }
@@ -41,12 +41,12 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
                 <span className="sd-frame" aria-hidden="true" />
                 <div className="sd-badge">
                   <span className="sd-badge-icon"><Icon k={`${sv}.icon`} d={s.icon} /></span>
-                  <span><small><T k="sd.badge" d="Service" line /></small><strong>{String(idx + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}</strong></span>
+                  <span><small><T k="sd.badge" d="Treatment" line /></small><strong>{String(idx + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}</strong></span>
                 </div>
               </div>
             </div>
             <div className="col-lg-6">
-              <span className="ind-kicker"><T k="sd.overview" d="Service Overview" line /></span>
+              <span className="ind-kicker"><T k="sd.overview" d="Treatment Overview" line /></span>
               <h2 className="sd-title"><T k={`${sv}.title`} d={s.title} /></h2>
               <p className="sd-lead"><T k={`${sv}.summary`} d={s.summary} /></p>
               <p><T k={`${p}.intro`} d={d.intro} /></p>
@@ -74,8 +74,8 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       <section className="sd-scope">
         <div className="container">
           <div className="sd-scope-head">
-            <span className="ind-kicker"><T k="sd.scope.kicker" d="What's Included" line /></span>
-            <h2 className="sd-title text-white"><T k="sd.scope.title" d="Scope of Work" line /></h2>
+            <span className="ind-kicker"><T k="sd.scope.kicker" d="Step By Step" line /></span>
+            <h2 className="sd-title text-white"><T k="sd.scope.title" d="What's Included" line /></h2>
           </div>
           <div className={flip ? "sd-scope-list" : "sd-scope-grid"}>
             {s.items.map((it, i) => (
@@ -95,8 +95,8 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
             <div className={`col-lg-5 ${flip ? "" : "order-lg-2"}`}>
               <span className="ind-kicker"><T k="sd.signs.kicker" d="Good To Know" line /></span>
               <h2 className="sd-title"><T k={`${p}.signsTitle`} d={d.signsTitle} /></h2>
-              <p className="mb-4"><T k="sd.signs.lead" d="If any of these sound familiar, our team can inspect and advise on the right next step." /></p>
-              <Link to="/contact" className="btn btn-primary py-3 px-5"><T k="sd.signs.btn" d="Book an Inspection" line /></Link>
+              <p className="mb-4"><T k="sd.signs.lead" d="If any of these sound familiar, book a check-up — an X-ray will show what is really happening." /></p>
+              <Link to="/contact" className="btn btn-primary py-3 px-5"><T k="sd.signs.btn" d="Book a Check-Up" line /></Link>
             </div>
             <div className="col-lg-7">
               <ul className="sd-signs-list">
@@ -136,7 +136,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
         <div className="container">
           <div className="sd-scope-head">
             <span className="ind-kicker"><T k="sd.others.kicker" d="Explore More" line /></span>
-            <h2 className="sd-title"><T k="sd.others.title" d="Other Services" line /></h2>
+            <h2 className="sd-title"><T k="sd.others.title" d="Other Treatments" line /></h2>
           </div>
           <div className="row g-4">
             {others.map((o) => (
@@ -181,7 +181,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
-      <CtaBanner k={`${p}.cta`} title={`Need ${s.title}?`} text="Tell us about your property and requirements. Our team will review the details and advise on the next steps." button={s.cta} />
+      <CtaBanner k={`${p}.cta`} title={`Need ${s.title}?`} text="Call or WhatsApp the clinic in Al-Mansour, Baghdad — open daily from 11 AM to 9 PM." button={s.cta} />
     </>
   );
 }

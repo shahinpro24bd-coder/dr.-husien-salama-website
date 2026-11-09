@@ -8,8 +8,8 @@ export const Route = createFileRoute("/services_/$slug")({
   head: ({ loaderData, matches }) => {
     const content = matches[0]?.loaderData as SiteContent | undefined;
     const s = mergeServices(content?.services).find((x) => x.slug === loaderData?.slug);
-    const title = s ? `${s.title} in Dubai | QMEP Electromechanical` : "Service | QMEP";
-    const desc = s?.summary ?? "MEP services by QMEP Electromechanical LLC.";
+    const title = s ? `${s.title} in Baghdad | Dr. Husien Salama` : "Treatment | Dr. Husien Salama";
+    const desc = s?.summary ?? "Dental treatment by Dr. Husien Salama, dentist in Al-Mansour, Baghdad.";
     return seoMeta(matches, `service-${loaderData?.slug ?? ""}`, title, desc);
   },
   component: ServicePage,

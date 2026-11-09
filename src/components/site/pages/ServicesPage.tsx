@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import hero2Asset from "@/assets/hero-2.webp";
+import hero2Asset from "@/assets/hero-2.jpg";
 import { services } from "@/lib/site";
 import { PageHeader, SectionTitle } from "@/components/site/Layout";
 import { CtaBanner, Process, ServicesGrid } from "@/components/site/Sections";
@@ -8,11 +8,11 @@ import { T, Img, Icon } from "@/lib/editable";
 export function ServicesPage() {
   return (
     <>
-      <PageHeader k="services" title="Services" crumb="Services" image={hero2Asset} />
+      <PageHeader k="services" title="Treatments" crumb="Treatments" image={hero2Asset} />
       <ServicesGrid />
       <div className="band py-5">
         <div className="container">
-          <SectionTitle k="services.details" kicker="Service Details" title="Solutions For Your Property's Essential Systems" />
+          <SectionTitle k="services.details" kicker="Treatment Details" title="How We Save And Restore Your Teeth" />
           {services.map((s, n) => (
             <div key={s.slug} id={s.slug} className="row g-5 align-items-center mb-5">
               <div className={`col-lg-5 ${n % 2 ? "order-lg-2" : ""}`}>
@@ -28,7 +28,7 @@ export function ServicesPage() {
                   ))}
                 </div>
                 <div className="d-flex flex-wrap gap-2 mt-2">
-                  <Link to="/services/$slug" params={{ slug: s.slug }} className="btn btn-primary py-3 px-5"><T k="services.detailsBtn" d="View Service Details" line /></Link>
+                  <Link to="/services/$slug" params={{ slug: s.slug }} className="btn btn-primary py-3 px-5"><T k="services.detailsBtn" d="View Treatment Details" line /></Link>
                   <Link to="/contact" className="btn btn-outline-primary py-3 px-4"><T k={`services.${n}.cta`} d={s.cta} line /></Link>
                 </div>
               </div>
@@ -37,7 +37,7 @@ export function ServicesPage() {
         </div>
       </div>
       <Process />
-      <CtaBanner k="services.cta" title="Need a Specific Service?" text="Tell us what you need, where the property is located, and whether the work involves maintenance, repair, installation, or a new project." button="Request a Service Quote" />
+      <CtaBanner k="services.cta" title="Not Sure Which Treatment You Need?" text="Tell us what you feel — pain, swelling, a broken tooth or an old treatment — and we will find the right next step." button="Book an Appointment" />
     </>
   );
 }

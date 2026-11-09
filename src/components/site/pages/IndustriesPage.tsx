@@ -1,36 +1,36 @@
 import { Link } from "@tanstack/react-router";
-import buildingsAsset from "@/assets/buildings.webp";
-import imgResAsset from "@/assets/about-1.webp";
-import imgComAsset from "@/assets/hero-2.webp";
-import imgFitAsset from "@/assets/about-2.webp";
-import imgFmAsset from "@/assets/service-maintenance.webp";
-import imgMcAsset from "@/assets/hero-3.webp";
+import buildingsAsset from "@/assets/hero-2.jpg";
+import imgResAsset from "@/assets/ig-case-decay-rescue.jpg";
+import imgComAsset from "@/assets/ig-case-broken-file.jpg";
+import imgFitAsset from "@/assets/ig-case-front-tooth.jpg";
+import imgFmAsset from "@/assets/ig-case-arrested-caries.jpg";
+import imgMcAsset from "@/assets/ig-dr-patient.jpg";
 import { PageHeader } from "@/components/site/Layout";
 import { CtaBanner } from "@/components/site/Sections";
 import { T, Img, Icon, useList, ItemTools, AddItem } from "@/lib/editable";
 
 const list = [
-  { img: imgResAsset, tag: "Villas · Apartments", icon: "fa-home", title: "Residential Properties", text: "Maintenance and repair support for villas, apartments, and residential buildings." },
-  { img: imgComAsset, tag: "Offices · Retail", icon: "fa-building", title: "Commercial Buildings", text: "MEP services for offices, retail spaces, and commercial facilities." },
-  { img: imgFitAsset, tag: "Interiors · Coordination", icon: "fa-drafting-compass", title: "Fit-Out Projects", text: "Coordination and technical support for electromechanical requirements within fit-out projects." },
-  { img: imgFmAsset, tag: "Service Scopes · AMC", icon: "fa-clipboard-list", title: "Property & Facility Management", text: "Maintenance support aligned with agreed service scopes and property requirements." },
-  { img: imgMcAsset, tag: "Specs · Schedules", icon: "fa-hard-hat", title: "Main Contractors", text: "MEP project support based on technical specifications, project schedules, and contractual requirements." },
+  { img: imgResAsset, tag: "Toothache · Swelling", icon: "fa-tooth", title: "Patients In Pain", text: "Deep decay and infection treated at the root, so the pain stops and the tooth stays." },
+  { img: imgComAsset, tag: "Retreatment · Broken Files", icon: "fa-redo", title: "Failed Root Canals", text: "Old root canals with infection, missed canals, ledges or separated instruments — retreated with care." },
+  { img: imgFitAsset, tag: "Front Teeth · Smile", icon: "fa-smile", title: "Front Teeth & Smile", text: "Infected or damaged front teeth treated and restored to look natural again." },
+  { img: imgFmAsset, tag: "Honest Advice", icon: "fa-balance-scale", title: "Second Opinions", text: "Not every dark spot needs a filling. Get an honest opinion before any treatment or extraction." },
+  { img: imgMcAsset, tag: "Baghdad · Provinces", icon: "fa-map-marker-alt", title: "Patients From All Over Iraq", text: "Visits planned so patients travelling from other provinces finish treatment in as few trips as possible." },
 ];
 
 export function IndustriesPage() {
   const items = useList("ind", list);
   return (
     <>
-      <PageHeader k="industries" title="Industries" crumb="Industries We Serve" image={buildingsAsset} />
+      <PageHeader k="industries" title="Who We Treat" crumb="Who We Treat" image={buildingsAsset} />
       <section className="ind-section">
         <span className="ind-grid-bg" aria-hidden="true" />
         <div className="container position-relative">
           <div className="ind-head">
             <div>
-              <span className="ind-kicker"><T k="ind.kicker" d="Industries We Serve" line /></span>
-              <h2 className="ind-title"><T k="ind.title" d="MEP Solutions For Different" /> <em><T k="ind.titleEm" d="Property Types" line /></em></h2>
+              <span className="ind-kicker"><T k="ind.kicker" d="Who We Treat" line /></span>
+              <h2 className="ind-title"><T k="ind.title" d="Care For Every" /> <em><T k="ind.titleEm" d="Kind Of Case" line /></em></h2>
             </div>
-            <p className="ind-lead"><T k="ind.lead" d="From private villas to large commercial sites, we adapt our electromechanical expertise to the way each property works." /></p>
+            <p className="ind-lead"><T k="ind.lead" d="From a simple check-up to the most challenging retreatment, every patient gets the same careful diagnosis and attention to detail." /></p>
           </div>
           <div className="ind-bento">
             {items.ids.map((id, i) => {
@@ -54,13 +54,13 @@ export function IndustriesPage() {
             <AddItem list={items} label="Add industry" />
             <Link to="/contact" className="ind-card ind-card--cta">
               <span className="ind-kicker"><T k="ind.cta.kicker" d="Not listed?" line /></span>
-              <h3 className="ind-card-title"><T k="ind.cta.title" d="Tell us about your property" /></h3>
+              <h3 className="ind-card-title"><T k="ind.cta.title" d="Tell us about your tooth" /></h3>
               <span className="ind-cta-btn"><T k="ind.cta.btn" d="Get in touch" line /> <i className="fa fa-arrow-right"></i></span>
             </Link>
           </div>
         </div>
       </section>
-      <CtaBanner k="ind.banner" title="Discuss Your Requirements" text="Whatever your property type, our team is ready to understand your needs and recommend suitable MEP solutions." button="Discuss Your Requirements" />
+      <CtaBanner k="ind.banner" title="Not Sure What You Need?" text="Book a check-up — Dr. Husien will examine your tooth, take X-rays and explain your options honestly." button="Book a Check-Up" />
     </>
   );
 }
